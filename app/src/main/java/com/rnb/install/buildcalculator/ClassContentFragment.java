@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +27,8 @@ public class ClassContentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private ViewPager viewPager;
+    private SectionPagerAdapter sectionPagerAdapter;
     private OnFragmentInteractionListener mListener;
 
     public ClassContentFragment() {
@@ -64,7 +66,11 @@ public class ClassContentFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_class_content, container, false);
+        View view = inflater.inflate(R.layout.fragment_class_content, container, false);
+        //fab.setImageResource(R.drawable.ic_email_black_24dp);
+        sectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
