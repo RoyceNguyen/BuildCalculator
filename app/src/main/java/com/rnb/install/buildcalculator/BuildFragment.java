@@ -89,17 +89,30 @@ public class BuildFragment extends Fragment {
         });
 
         list = (ListView) view.findViewById(R.id.buildslist);
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        final ArrayList<Build> buildslist = db.getAllBuilds();
-        db.closeDB();
+       // DatabaseHandler db = new DatabaseHandler(getContext());
+        //final ArrayList<Build> buildslist = db.getAllBuilds();
+        //db.closeDB();
 
         //create custom adapter
-        final CustomAdapter adapter = new CustomAdapter(getContext(), buildslist);
-        list.setAdapter(adapter);
+        //final CustomAdapter adapter = new CustomAdapter(getContext(), buildslist);
+       // list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 
+            }
+        });
+
+        list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            //    DatabaseHandler db = new DatabaseHandler(getContext());
+               // Build location = buildslist.get(position);
+               // db.deleteLocation(location.getId());
+               // db.closeDB();
+               // buildslistlist.remove(position);
+            //    adapter.notifyDataSetChanged();
+                return false;
             }
         });
 
