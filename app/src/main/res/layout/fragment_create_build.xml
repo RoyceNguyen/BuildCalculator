@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:columnCount="2"
+    android:useDefaultMargins="true"
     tools:context="com.rnb.install.buildcalculator.CreateBuildFragment">
 
     <!-- TODO: Update blank fragment layout -->
