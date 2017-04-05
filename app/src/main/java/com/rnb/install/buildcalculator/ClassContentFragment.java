@@ -124,7 +124,7 @@ public class ClassContentFragment extends Fragment {
                 case 3:
                     return ClassFragment.newInstance("Hunter",R.drawable.bow, "Ranged physical damage dealer , deals moderate constant damage with lots of utilities for the party.\n");
                 case 4:
-                    return ClassFragment.newInstance("Healer",R.drawable.money, "The support class , they're vital to the party as not only to heal and revive teamates but also to buff allies and debuff enemies.\n");
+                    return ClassFragment.newInstance("Healer",R.drawable.staff, "The support class , they're vital to the party as not only to heal and revive teamates but also to buff allies and debuff enemies.\n");
                 default:
                     return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
             }
