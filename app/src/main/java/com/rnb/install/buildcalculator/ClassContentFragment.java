@@ -116,17 +116,17 @@ public class ClassContentFragment extends Fragment {
             //adding content to the viewpager
             switch(position){
                 case 0:
-                    return ClassFragment.newInstance("Rule #1",R.drawable.prohibition, "DO NOT sacrifice your study for the club , club activities should only be taken during your free time.");
+                    return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
                 case 1:
-                    return ClassFragment.newInstance("Rule #2",R.drawable.handshake, "Play and carries out activities in a way so that everyone have fun .This involves knowing and following the rules, Staying focused on the game, playing at an appropriate volume level, showing good sportsmanship and making consensus decisions on the games that are played.\n");
+                    return ClassFragment.newInstance("Mage",R.drawable.wand, "Long range magic damage dealer , specializes in casting spells and dealing area of effect damage .\n");
                 case 2:
-                    return ClassFragment.newInstance("Rule #3",R.drawable.respect, "Treat the game materials with the utmost respect . This means that treating club's properties like consoles , peripherals, tools ,etc carefully.If you played or handled any club's equipments,make sure to clean up before leaving ");
+                    return ClassFragment.newInstance("Assassin",R.drawable.knife, "Melee damage dealer , a glass cannon with high damage and low defense , high risk high reward playstyle .\n");
                 case 3:
-                    return ClassFragment.newInstance("Rule #4",R.drawable.food, "Food and drinks are not allowed inside the clubroom due to potential risk of damaging equipments");
+                    return ClassFragment.newInstance("Hunter",R.drawable.bow, "Ranged physical damage dealer , deals moderate constant damage with lots of utilities for the party.\n");
                 case 4:
-                    return ClassFragment.newInstance("Rule #5",R.drawable.money, "If you break it , you pay for it . Meaning any serious damage caused to equipment will result in the person having to pay back to the club so we can get a replacement");
+                    return ClassFragment.newInstance("Healer",R.drawable.money, "The support class , they're vital to the party as not only to heal and revive teamates but also to buff allies and debuff enemies.\n");
                 default:
-                    return ClassFragment.newInstance("Rule #1",R.drawable.prohibition, "DO NOT sacrifice your study for the club , club activities should only be taken during your free time.");
+                    return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
             }
         }
         public int getCount(){
