@@ -11,7 +11,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -36,6 +38,8 @@ public class BuildFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     ListView list;
+    //TextView
+    //galleryLayout;
 
 
     private OnFragmentInteractionListener mListener;
@@ -89,38 +93,49 @@ public class BuildFragment extends Fragment {
         });
 
         list = (ListView) view.findViewById(R.id.buildslist);
-       // DatabaseHandler db = new DatabaseHandler(getContext());
-        //final ArrayList<Build> buildslist = db.getAllBuilds();
-        //db.closeDB();
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        final ArrayList<Build> buildslist = db.getAllBuilds();
+        db.closeDB();
 
         //create custom adapter
-        //final CustomAdapter adapter = new CustomAdapter(getContext(), buildslist);
-       // list.setAdapter(adapter);
+        final CustomAdapter adapter = new CustomAdapter(getContext(), buildslist);
+        list.setAdapter(adapter);
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                
+                TextView details = (TextView) view.findViewById(R.id.details);
+                ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
+                if(galleryLayout.getVisibility() == View.GONE ||
+                        galleryLayout.getVisibility() == View.INVISIBLE){
+
+                    galleryLayout.setVisibility(View.VISIBLE);
+                    //update the text of the show more
+                    details.setText("Click to show less");
+                    //update the chevron image
+                    chevron.setImageResource(R.drawable.ic_expand_less_black_24dp);
+
+                }
+                else{
+                    galleryLayout.setVisibility(View.GONE);
+                    details.setText("Click to show more");
+                    //update the chevron image
+                    chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
+                }
             }
         });
 
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-            //    DatabaseHandler db = new DatabaseHandler(getContext());
-               // Build location = buildslist.get(position);
-               // db.deleteLocation(location.getId());
-               // db.closeDB();
-               // buildslistlist.remove(position);
-            //    adapter.notifyDataSetChanged();
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                Build build = buildslist.get(position);
+                db.deleteBuild(build.getId());
+                db.closeDB();
+                buildslist.remove(position);
+                adapter.notifyDataSetChanged();
                 return false;
             }
         });
-
-
-
-
-
-
         return view;
     }
 
@@ -131,6 +146,16 @@ public class BuildFragment extends Fragment {
         }
 
     }
+
+    /**
+     * getView is used to take every item in a list
+     * and assign a view to it.
+     * With this specific adapter we specified item_view as the view
+     * we want every item in a list to look like.
+     * After that item has item_view attached to it
+     * we populate the item_view's name TextView
+     */
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
