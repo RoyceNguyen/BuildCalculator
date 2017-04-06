@@ -23,7 +23,7 @@ public class ClassFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
-    private static final int ARG_PARAM2 = "param2";
+    private static final String ARG_PARAM2 = "param2";
     //add in another parameter
     private static final String ARG_PARAM3 = "param3";
 
@@ -51,7 +51,7 @@ public class ClassFragment extends Fragment {
         ClassFragment fragment = new ClassFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_PARAM2, param2);
         args.putString(ARG_PARAM3, param3);
         fragment.setArguments(args);
         return fragment;
@@ -62,7 +62,7 @@ public class ClassFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam2 = getArguments().getInt(ARG_PARAM2);
             mParam3 = getArguments().getString(ARG_PARAM3);
         }
     }
@@ -72,7 +72,7 @@ public class ClassFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_rules, container, false);
+        View view = inflater.inflate(R.layout.fragment_class, container, false);
         //check whether or not title and description is empty , if it is , set the next to mParam1 and mParam2
         if(mParam1 != null){
             TextView text = (TextView) view.findViewById(R.id.title);
