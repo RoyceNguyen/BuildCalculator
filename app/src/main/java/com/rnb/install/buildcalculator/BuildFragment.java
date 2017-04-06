@@ -38,7 +38,7 @@ public class BuildFragment extends Fragment {
     private String mParam1;
     private String mParam2;
     ListView list;
-    //TextView
+    TextView build;
     //galleryLayout;
 
 
@@ -103,12 +103,16 @@ public class BuildFragment extends Fragment {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView build = (TextView) view.findViewById(R.id.build);
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
-                if(galleryLayout.getVisibility() == View.GONE ||
-                        galleryLayout.getVisibility() == View.INVISIBLE){
-
-                    galleryLayout.setVisibility(View.VISIBLE);
+                //if(galleryLayout.getVisibility() == View.GONE ||
+                        //galleryLayout.getVisibility() == View.INVISIBLE){
+                if(build.getText() != (buildslist.get(position)).getName()){
+                    //update the text of build
+                    build.setText(((Build) list.getItemAtPosition(position)).getName());
+                    //update the text of the show more
+                    //galleryLayout.setVisibility(View.VISIBLE);
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
@@ -116,7 +120,8 @@ public class BuildFragment extends Fragment {
 
                 }
                 else{
-                    galleryLayout.setVisibility(View.GONE);
+                    build.setText("");
+                    //galleryLayout.setVisibility(View.GONE);
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
@@ -145,16 +150,28 @@ public class BuildFragment extends Fragment {
             super(context, 0, items);
         }
 
+        /**
+         * getView is used to take every item in a list
+         * and assign a view to it.
+         * With this specific adapter we specified item_view as the view
+         * we want every item in a list to look like.
+         * After that item has item_view attached to it
+         * we populate the item_view's name TextView
+         */
+        public View getView(int position, View convertView, ViewGroup parent){
+            Build item = getItem(position);
+
+            if(convertView == null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
+            }
+            TextView name = (TextView) convertView.findViewById(R.id.name);
+            name.setText(item.getName());
+            //can add an intent here for an image to be clicked if we think of anything
+            return convertView;
+        }
     }
 
-    /**
-     * getView is used to take every item in a list
-     * and assign a view to it.
-     * With this specific adapter we specified item_view as the view
-     * we want every item in a list to look like.
-     * After that item has item_view attached to it
-     * we populate the item_view's name TextView
-     */
+
 
 
     // TODO: Rename method, update argument and hook method into UI event

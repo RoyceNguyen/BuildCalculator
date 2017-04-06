@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_build) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new BuildFragment());
             tran.commit();
 
         } else if (id == R.id.nav_slideshow) {

@@ -80,7 +80,7 @@ public class CreateBuildFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String buildItem = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
+                String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
                 Build build = new Build(name.getText().toString(), weapon.getText().toString(), gear.getText().toString());
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 db.addBuild(build);
