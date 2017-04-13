@@ -1,8 +1,12 @@
 package com.rnb.install.buildcalculator;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,7 +18,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+                   //adding all the interaction listeners
+                   MainFragment.OnFragmentInteractionListener,
+                   ClassContentFragment.OnFragmentInteractionListener,
+                   ClassFragment.OnFragmentInteractionListener,
+                   DamageCalculator.OnFragmentInteractionListener,
+                   CreateBuildFragment.OnFragmentInteractionListener,
+                   BuildFragment.OnFragmentInteractionListener{
+
+    //adding fragment manager and fab button
+    FragmentManager fm = getSupportFragmentManager();
+    String email = "rnbgaming@outlook.com";
+    public static FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +39,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        //We first check to see if the activity has already been created
+        if(savedInstanceState == null){
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
+        }
+
+        fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,22 +103,47 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_home) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new MainFragment());
+            tran.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_build) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new BuildFragment());
+            tran.commit();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_class) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new ClassContentFragment());
+            tran.commit();
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_calculator) {
+            FragmentTransaction tran = fm.beginTransaction();
+            tran.replace(R.id.content_main, new DamageCalculator());
+            tran.commit();
 
         } else if (id == R.id.nav_send) {
+            String[] emailaddresses = {email};
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_EMAIL, emailaddresses);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Question from the Build Calculator app");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello , I have some questions about...");
+            if(intent.resolveActivity(getPackageManager()) != null){
+                startActivity(intent);
+            } else {
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No installed software to complete the task", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+    public void onFragmentInteraction(Uri uri){
+
     }
 }
