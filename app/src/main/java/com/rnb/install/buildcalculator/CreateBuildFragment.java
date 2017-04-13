@@ -4,9 +4,12 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 
 /**
@@ -28,6 +31,10 @@ public class CreateBuildFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    EditText name;
+    EditText weapon;
+    EditText gear;
 
     public CreateBuildFragment() {
         // Required empty public constructor
@@ -60,11 +67,30 @@ public class CreateBuildFragment extends Fragment {
         }
     }
 
+    FragmentManager fm;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_build, container, false);
+        View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
+        name = (EditText) view.findViewById(R.id.buildName);
+        weapon = (EditText) view.findViewById(R.id.weaponName);
+        gear = (EditText) view.findViewById(R.id.gearName);
+        Button submit = (Button) view.findViewById(R.id.submitButton);
+        submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
+                Build build = new Build(name.getText().toString(), weapon.getText().toString(), gear.getText().toString());
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                db.addBuild(build);
+                db.close();
+                fm = getActivity().getSupportFragmentManager();
+                fm.popBackStack();
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

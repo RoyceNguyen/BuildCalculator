@@ -2,15 +2,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rnb.install.buildcalculator.BuildFragment">
+    tools:context="com.rnb.install.buildcalculator.BuildFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-    <!-- Create ListView -->
+    <!-- Create ListView and add an animation -->
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/buildslist">
-        <!-- add an animation here eventually -->
+        android:id="@+id/buildslist"
+        android:layoutAnimation="@anim/card_layout_animation">
 
     </ListView>
 
