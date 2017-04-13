@@ -113,19 +113,14 @@ public class MainActivity extends AppCompatActivity
             tran.replace(R.id.content_main, new BuildFragment());
             tran.commit();
 
-        } else if (id == R.id.nav_slideshow) {
+        } else if (id == R.id.nav_class) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new ClassContentFragment());
             tran.commit();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_calculator) {
             FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
-            tran.commit();
-
-        } else if (id == R.id.nav_share) {
-            FragmentTransaction tran = fm.beginTransaction();
-            tran.replace(R.id.content_main, new MainFragment());
+            tran.replace(R.id.content_main, new DamageCalculator());
             tran.commit();
 
         } else if (id == R.id.nav_send) {
@@ -133,8 +128,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(Intent.ACTION_SENDTO);
             intent.setData(Uri.parse("mailto:"));
             intent.putExtra(Intent.EXTRA_EMAIL, emailaddresses);
-            intent.putExtra(Intent.EXTRA_SUBJECT, "Question from the Hockey Club");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hello Club, I have some questions about...");
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Question from the Build Calculator app");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello , I have some questions about...");
             if(intent.resolveActivity(getPackageManager()) != null){
                 startActivity(intent);
             } else {
