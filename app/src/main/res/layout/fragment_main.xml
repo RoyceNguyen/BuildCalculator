@@ -1,13 +1,33 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.rnb.install.buildcalculator.MainFragment">
+    tools:context="com.rnb.install.buildcalculator.MainFragment"
+    android:orientation="vertical">
 
     <!-- TODO: Update blank fragment layout -->
-
+    <!-- 2 Textviews that acts as a title and a fitting image  -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:text="Build Calculator"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorPrimary" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Damage Calculator for your character build"
+        android:id="@+id/textView3"
+        android:gravity="center_vertical|center_horizontal"
+        android:textStyle="bold|italic" />
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/game"
+        android:id="@+id/imageView2" />
+</LinearLayout>

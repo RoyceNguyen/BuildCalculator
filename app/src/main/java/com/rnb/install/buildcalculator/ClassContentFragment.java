@@ -118,13 +118,13 @@ public class ClassContentFragment extends Fragment {
                 case 0:
                     return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
                 case 1:
-                    return ClassFragment.newInstance("Mage",R.drawable.healer, "Long range magic damage dealer , specializes in casting spells and dealing area of effect damage .\n");
+                    return ClassFragment.newInstance("Mage",R.drawable.mage, "Long range magic damage dealer , specializes in casting spells and dealing area of effect damage .\n");
                 case 2:
                     return ClassFragment.newInstance("Assassin",R.drawable.knife, "Melee damage dealer , a glass cannon with high damage and low defense , high risk high reward playstyle .\n");
                 case 3:
                     return ClassFragment.newInstance("Hunter",R.drawable.bow, "Ranged physical damage dealer , deals moderate constant damage with lots of utilities for the party.\n");
                 case 4:
-                    return ClassFragment.newInstance("Healer",R.drawable.healer, "The support class , they're vital to the party as not only to heal and revive teamates but also to buff allies and debuff enemies.\n");
+                    return ClassFragment.newInstance("Healer",R.drawable.heal, "The support class , they're vital to the party as not only to heal and revive teamates but also to buff allies and debuff enemies.\n");
                 default:
                     return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
             }
