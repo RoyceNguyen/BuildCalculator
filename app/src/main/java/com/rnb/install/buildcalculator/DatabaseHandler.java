@@ -134,15 +134,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('ROBE', 150, 100, 4000)");
         db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('DRAGONSKIN', 500, 500, 500)");
 
-
-
-
-
-
-
-
-
-
     }
 
 
@@ -210,17 +201,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, item.getName());
-        //values.put(COLUMN_WEAPON, item.getWeapon());
-        //values.put(COLUMN_GEAR, item.getGear());
+        values.put(COLUMN_ARMOR, item.getArmor());
+        values.put(COLUMN_HEALTH, item.getHealth());
+        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
+        db.insert(TABLE_GEAR, null, values);
+        db.close();
+    }
+
+    public void addWeapon(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
         values.put(COLUMN_ATTACKDAMAGE, item.getAttackDamage());
         values.put(COLUMN_ATTACKSPEED, item.getAttackSpeed());
         values.put(COLUMN_CRIT, item.getCrit());
         values.put(COLUMN_CRITDAMAGE, item.getCritDamage());
         values.put(COLUMN_MAGICDAMAGE, item.getMagicDamage());
-        values.put(COLUMN_ARMOR, item.getArmor());
-        values.put(COLUMN_HEALTH, item.getHealth());
-        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
-        db.insert(TABLE_GEAR, null, values);
+        db.insert(TABLE_WEAPON, null, values);
         db.close();
     }
 
@@ -242,7 +239,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Build> getAllBuilds() {
         ArrayList<Build> buildsList = new ArrayList<Build>();
-        String selectQuery = "SELECT  * FROM " + TABLE_BUILDS;
+        String selectQuery = "SELECT * FROM " + TABLE_BUILDS;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
