@@ -44,6 +44,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_WEAPON = "weapon";
     private static final String COLUMN_GEAR = "gear";
+    private static final String COLUMN_ATTACKDAMAGE = "attackdamage";
+    private static final String COLUMN_ATTACKSPEED = "attackspeed";
+    private static final String COLUMN_MAGICDAMAGE = "magicdamage";
+    private static final String COLUMN_CRIT = "crit";
+    private static final String COLUMN_CRITDAMAGE = "critdamage";
+    private static final String COLUMN_HEALTH = "health";
+    private static final String COLUMN_ARMOR = "aromr";
+    private static final String COLUMN_MAGICRESIST = "magicresist";
 
 
     /**
@@ -147,6 +155,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_IMAGELOCATION);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_PICTURES);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_BUILDS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_GEAR);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_WEAPON);
         onCreate(db);
     }
 
@@ -192,6 +202,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_LOCATION, location);
         values.put(COLUMN_PICTURE, image);
         db.insert(TABLE_IMAGELOCATION, null, values);
+        db.close();
+    }
+
+
+    public void addGear(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
+        //values.put(COLUMN_WEAPON, item.getWeapon());
+        values.put(COLUMN_GEAR, item.getGear());
+        db.insert(TABLE_GEAR, null, values);
         db.close();
     }
 
