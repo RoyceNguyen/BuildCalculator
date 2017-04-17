@@ -215,9 +215,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_ATTACKDAMAGE, item.getAttackDamage());
         values.put(COLUMN_ATTACKSPEED, item.getAttackSpeed());
         values.put(COLUMN_CRIT, item.getCrit());
-
-
-
+        values.put(COLUMN_CRITDAMAGE, item.getCritDamage());
+        values.put(COLUMN_MAGICDAMAGE, item.getMagicDamage());
+        values.put(COLUMN_ARMOR, item.getArmor());
+        values.put(COLUMN_HEALTH, item.getHealth());
+        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
         db.insert(TABLE_GEAR, null, values);
         db.close();
     }
