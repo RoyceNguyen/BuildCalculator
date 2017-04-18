@@ -28,6 +28,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Create the names of all the tables
      */
     private static final String TABLE_BUILDS = "builds";
+    private static final String TABLE_WEAPON = "weapon";
+    private static final String TABLE_GEAR = "gear";
     private static final String TABLE_PICTURES = "picture";
     private static final String TABLE_IMAGELOCATION = "image_location";
 
@@ -59,16 +61,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Create statements for all of our tables
      */
 
-    private static final String CREATE_BUILDS_TABLE = "CREATE TABLE " + TABLE_BUILDS + "("
-            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + COLUMN_NAME + " TEXT," + COLUMN_WEAPON + " TEXT,"
-            + COLUMN_GEAR + " TEXT" + ")";
+    private static final String CREATE_WEAPON_TABLE = "CREATE TABLE" +
+            TABLE_WEAPON + "(" +
+            COLUMN_WEAPON + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_NAME + " TEXT," +
+            ")";
 
-    private static final String CREATE_PICTURES_TABLE = "CREATE TABLE " + TABLE_PICTURES + "("
-            + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," + COLUMN_RESOURCE + " TEXT" + ")";
+    private static final String CREATE_GEAR_TABLE = "CREATE TABLE" +
+            TABLE_GEAR + "(" +
+            COLUMN_GEAR + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_NAME + " TEXT," +
+            ")";
 
-    private static final String CREATE_IMAGE_LOCATION_TABLE = "CREATE TABLE " + TABLE_IMAGELOCATION + "("
-            + COLUMN_LOCATION + " INTEGER REFERENCES " + TABLE_BUILDS + "(" +COLUMN_ID +"),"
-            + COLUMN_PICTURE + " INTEGER REFERENCES " + TABLE_PICTURES + "(" +COLUMN_ID +")" +")";
+    private static final String CREATE_BUILDS_TABLE = "CREATE TABLE " +
+            TABLE_BUILDS + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_NAME + " TEXT," +
+            COLUMN_WEAPON + " TEXT," +
+            COLUMN_GEAR + " TEXT" +
+            ")";
+
+    private static final String CREATE_PICTURES_TABLE = "CREATE TABLE " +
+            TABLE_PICTURES + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_RESOURCE + " TEXT" +
+            ")";
+
+    private static final String CREATE_IMAGE_LOCATION_TABLE = "CREATE TABLE " +
+            TABLE_IMAGELOCATION + "(" +
+            COLUMN_LOCATION + " INTEGER REFERENCES " +
+            TABLE_BUILDS + "(" +
+            COLUMN_ID + ")," +
+            COLUMN_PICTURE + " INTEGER REFERENCES " +
+            TABLE_PICTURES + "(" +
+            COLUMN_ID + ")" +
+            ")";
 
     public DatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -83,6 +110,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_BUILDS_TABLE);
         db.execSQL(CREATE_PICTURES_TABLE);
         db.execSQL(CREATE_IMAGE_LOCATION_TABLE);
+        db.execSQL(CREATE_WEAPON_TABLE);
+        db.execSQL(CREATE_GEAR_TABLE);
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('RAGE', 5000, 1.6, 5, 400)");
     }
 
     /**
@@ -113,6 +143,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.insert(TABLE_BUILDS, null, values);
         db.close();
     }
+
     //We modified addPicture to return the rowNumber it was added into
     public int addPicture(Picture picture) {
         SQLiteDatabase db = this.getWritableDatabase();

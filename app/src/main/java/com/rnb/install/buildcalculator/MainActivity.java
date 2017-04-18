@@ -1,5 +1,6 @@
 package com.rnb.install.buildcalculator;
 
+import android.app.SearchManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     //adding fragment manager and fab button
     FragmentManager fm = getSupportFragmentManager();
     String email = "rnbgaming@outlook.com";
+    String query = "character build";
     public static FloatingActionButton fab;
 
     @Override
@@ -105,21 +107,25 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_home) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new MainFragment());
             tran.commit();
 
         } else if (id == R.id.nav_build) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new BuildFragment());
             tran.commit();
 
         } else if (id == R.id.nav_class) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new ClassContentFragment());
             tran.commit();
 
         } else if (id == R.id.nav_calculator) {
             FragmentTransaction tran = fm.beginTransaction();
+            tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new DamageCalculator());
             tran.commit();
 
@@ -137,6 +143,24 @@ public class MainActivity extends AppCompatActivity
                 snackbar.show();
             }
 
+        }else if (id == R.id.nav_search) {
+            Intent intent = new Intent(Intent.ACTION_SEARCH);
+            intent.putExtra(SearchManager.QUERY, query);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            } else {
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No installed software to complete the task", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
+        }else if (id == R.id.nav_web) {
+            Uri webpage = Uri.parse("rnbcalculator.com");
+            Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivity(intent);
+            }else {
+                Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No installed software to complete the task", Snackbar.LENGTH_SHORT);
+                snackbar.show();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
