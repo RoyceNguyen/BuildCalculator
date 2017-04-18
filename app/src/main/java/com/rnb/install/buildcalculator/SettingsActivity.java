@@ -19,6 +19,8 @@ public class SettingsActivity extends PreferenceActivity {
     }
 
     public static class BuildPrefFragment extends PreferenceFragment {
+
+        @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preferences);
