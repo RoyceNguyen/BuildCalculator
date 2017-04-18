@@ -179,6 +179,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void addGear(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
+        values.put(COLUMN_ARMOR, item.getArmor());
+        values.put(COLUMN_HEALTH, item.getHealth());
+        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
+        db.insert(TABLE_GEAR, null, values);
+        db.close();
+    }
+
+    public void addWeapon(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
+        values.put(COLUMN_ATTACKDAMAGE, item.getAttackDamage());
+        values.put(COLUMN_ATTACKSPEED, item.getAttackSpeed());
+        values.put(COLUMN_CRIT, item.getCrit());
+        values.put(COLUMN_CRITDAMAGE, item.getCritDamage());
+        values.put(COLUMN_MAGICDAMAGE, item.getMagicDamage());
+        db.insert(TABLE_WEAPON, null, values);
+        db.close();
+    }
+
     //We modified addPicture to return the rowNumber it was added into
     public int addPicture(Picture picture) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -207,33 +231,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-    public void addGear(Item item) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, item.getName());
-        values.put(COLUMN_ARMOR, item.getArmor());
-        values.put(COLUMN_HEALTH, item.getHealth());
-        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
-        db.insert(TABLE_GEAR, null, values);
-        db.close();
-    }
-
-    public void addWeapon(Item item) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_NAME, item.getName());
-        values.put(COLUMN_ATTACKDAMAGE, item.getAttackDamage());
-        values.put(COLUMN_ATTACKSPEED, item.getAttackSpeed());
-        values.put(COLUMN_CRIT, item.getCrit());
-        values.put(COLUMN_CRITDAMAGE, item.getCritDamage());
-        values.put(COLUMN_MAGICDAMAGE, item.getMagicDamage());
-        db.insert(TABLE_WEAPON, null, values);
-        db.close();
-    }
-
     /**
      * READ objects from database
      */
+    //Creating getBuild and getAllBuilds
     public Build getBuild(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.query(TABLE_BUILDS,
@@ -266,8 +267,74 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return buildsList;
     }
 
+    //Creating getWeapon and getAllWeapons
+    public Item getWeapon(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_WEAPON,
+                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_ATTACKDAMAGE, COLUMN_ATTACKSPEED, COLUMN_CRIT, COLUMN_CRITDAMAGE}, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
 
+        if (cursor != null)
+            cursor.moveToFirst();
+        Item item = new Item(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
+        return item;
+    }
 
+    public ArrayList<Item> getAllWeapons() {
+        ArrayList<Item> weaponsList = new ArrayList<Item>();
+        String selectQuery = "SELECT * FROM " + TABLE_WEAPON;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Item item = new Item();
+                item.setId(Integer.parseInt(cursor.getString(0)));
+                item.setName(cursor.getString(1));
+                item.setAttackDamage(cursor.getInt(2));
+                item.setAttackSpeed(cursor.getDouble(3));
+                item.setCrit(cursor.getInt(4));
+                item.setCritDamage(cursor.getInt(5));
+                weaponsList.add(item);
+            } while (cursor.moveToNext());
+        }
+        return weaponsList;
+    }
+
+    //Creating getGear and getAllGear
+    public Item getGear(int id) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TABLE_WEAPON,
+                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_HEALTH, COLUMN_ARMOR, COLUMN_MAGICRESIST}, COLUMN_ID + "=?",
+                new String[] { String.valueOf(id) }, null, null, null, null);
+
+        if (cursor != null)
+            cursor.moveToFirst();
+        Item item = new Item(Integer.parseInt(cursor.getString(0)),
+                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
+        return item;
+    }
+
+    public ArrayList<Item> getAllGears() {
+        ArrayList<Item> gearsList = new ArrayList<Item>();
+        String selectQuery = "SELECT * FROM " + TABLE_WEAPON;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Item item = new Item();
+                item.setId(Integer.parseInt(cursor.getString(0)));
+                item.setName(cursor.getString(1));
+                item.setHealth(cursor.getInt(2));
+                item.setArmor(cursor.getInt(3));
+                item.setMagicResist(cursor.getInt(4));
+                gearsList.add(item);
+            } while (cursor.moveToNext());
+        }
+        return gearsList;
+    }
 
 
     public Picture getPicture(int id) {
@@ -330,8 +397,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-
-
     /**
      * UPDATE objects in database
      */
@@ -343,6 +408,29 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(COLUMN_GEAR, build.getGear());
         return db.update(TABLE_BUILDS, values, COLUMN_ID + " = ?", new String[] { String.valueOf(build.getId()) });
     }
+
+    public int updateWeapon(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
+        values.put(COLUMN_ATTACKDAMAGE, item.getAttackDamage());
+        values.put(COLUMN_ATTACKSPEED, item.getAttackSpeed());
+        values.put(COLUMN_CRIT, item.getCrit());
+        values.put(COLUMN_CRITDAMAGE, item.getCritDamage());
+        return db.update(TABLE_WEAPON, values, COLUMN_ID + " = ?", new String[] { String.valueOf(item.getId()) });
+    }
+
+    public int updateGear(Item item) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, item.getName());
+        values.put(COLUMN_HEALTH, item.getHealth());
+        values.put(COLUMN_ARMOR, item.getArmor());
+        values.put(COLUMN_MAGICRESIST, item.getMagicResist());
+        return db.update(TABLE_GEAR, values, COLUMN_ID + " = ?", new String[] { String.valueOf(item.getId()) });
+    }
+
+
     public int updatePicture(Picture picture) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -358,6 +446,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_BUILDS, COLUMN_ID + " = ?",
                 new String[] { String.valueOf(build_id) });
     }
+
+    public void deleteWeapon(long weapon_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_WEAPON, COLUMN_ID + " = ?",
+                new String[] {String.valueOf(weapon_id)});
+    }
+
+    public void deleteGear(long gear_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_GEAR, COLUMN_ID + " = ?",
+                new String[] {String.valueOf(gear_id)});
+    }
+
     public void deletePicture(long picture_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_PICTURES, COLUMN_ID + " = ?",
