@@ -243,7 +243,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
         Build build = new Build(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3));
+                cursor.getString(1), cursor.getInt(2), cursor.getInt(3));
         return build;
     }
 
@@ -258,8 +258,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 Build build = new Build();
                 build.setId(Integer.parseInt(cursor.getString(0)));
                 build.setName(cursor.getString(1));
-                build.setWeapon(cursor.getString(2));
-                build.setGear(cursor.getString(3));
+                build.setWeapon(cursor.getInt(2));
+                build.setGear(cursor.getInt(3));
                 buildsList.add(build);
             } while (cursor.moveToNext());
         }
