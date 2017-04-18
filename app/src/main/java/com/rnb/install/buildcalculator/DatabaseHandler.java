@@ -71,7 +71,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_WEAPON_TABLE = "CREATE TABLE" +
             TABLE_WEAPON + "(" +
-            //COLUMN_WEAPON + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT," +
             COLUMN_ATTACKDAMAGE + " INTEGER, " +
@@ -82,7 +81,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_GEAR_TABLE = "CREATE TABLE" +
             TABLE_GEAR + "(" +
-            //COLUMN_GEAR + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT," +
             COLUMN_HEALTH + " INTEGER, " +
@@ -144,7 +142,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('ARCHON', 300, 300, 1700)");
         db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('ROBE', 150, 100, 4000)");
         db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('DRAGONSKIN', 500, 500, 500)");
-
     }
 
 

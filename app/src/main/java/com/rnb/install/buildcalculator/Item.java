@@ -38,7 +38,7 @@ public class Item {
         this.magicDamage = magicDamage;
     }*/
 
-    public Item(int id, String name, int health, int armor, int magicResist{
+    public Item(int id, String name, int health, int armor, int magicResist){
         this.id = id;
         this.name = name;
         this.health = health;
