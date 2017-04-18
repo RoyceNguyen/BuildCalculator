@@ -71,14 +71,23 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     private static final String CREATE_WEAPON_TABLE = "CREATE TABLE" +
             TABLE_WEAPON + "(" +
-            COLUMN_WEAPON + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            //COLUMN_WEAPON + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT," +
+            COLUMN_ATTACKDAMAGE + " INTEGER, " +
+            COLUMN_ATTACKSPEED + " INTEGER, " +
+            COLUMN_CRIT + " INTEGER, " +
+            COLUMN_CRITDAMAGE + " INTEGER, " +
             ")";
 
     private static final String CREATE_GEAR_TABLE = "CREATE TABLE" +
             TABLE_GEAR + "(" +
-            COLUMN_GEAR + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            //COLUMN_GEAR + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT," +
+            COLUMN_HEALTH + " INTEGER, " +
+            COLUMN_ARMOR + " INTEGER, " +
+            COLUMN_MAGICRESIST + " INTEGER, " +
             ")";
 
     private static final String CREATE_BUILDS_TABLE = "CREATE TABLE " +
@@ -136,8 +145,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-
-
+    
     /**
      * When the database upgrades delete the old tables and recreate them
      */
