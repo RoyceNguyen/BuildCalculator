@@ -94,8 +94,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             TABLE_BUILDS + "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
             COLUMN_NAME + " TEXT," +
-            COLUMN_WEAPON + " TEXT," +
-            COLUMN_GEAR + " TEXT" +
+            COLUMN_WEAPON + " INTEGER REFERENCES" +
+            TABLE_WEAPON + "("+COLUMN_ID+")," +
+            COLUMN_GEAR + " INTEGER REFERENCES" +
+            TABLE_GEAR + "("+COLUMN_ID+")" +
             ")";
 
     private static final String CREATE_PICTURES_TABLE = "CREATE TABLE " +
@@ -145,7 +147,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     }
 
-    
+
     /**
      * When the database upgrades delete the old tables and recreate them
      */
@@ -264,6 +266,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return buildsList;
     }
 
+
+
+
+
     public Picture getPicture(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -322,6 +328,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         }
         return pictureList;
     }
+
+
 
 
     /**
