@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
 /**
@@ -32,9 +33,9 @@ public class CreateBuildFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    EditText name;
-    EditText weapon;
-    EditText gear;
+    Spinner name;
+    Spinner weapon;
+    Spinner gear;
 
     public CreateBuildFragment() {
         // Required empty public constructor
@@ -74,8 +75,9 @@ public class CreateBuildFragment extends Fragment {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
         name = (EditText) view.findViewById(R.id.buildName);
-        weapon = (EditText) view.findViewById(R.id.weaponName);
+        weapon = (Spinner) view.findViewById(R.id.weaponName);
         gear = (EditText) view.findViewById(R.id.gearName);
+        clas
         Button submit = (Button) view.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
