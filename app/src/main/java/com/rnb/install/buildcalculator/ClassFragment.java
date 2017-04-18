@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -80,7 +82,11 @@ public class ClassFragment extends Fragment {
         }
         if(mParam2 != 0){
             ImageView image = (ImageView) view.findViewById(R.id.itemImage);
-            image.setImageResource(mParam2);
+            Picasso.with(getContext())
+                    .load(mParam2)
+                    .resize(500,650)
+                    .into(image);
+
         }
         if(mParam3 != null){
             TextView text = (TextView) view.findViewById(R.id.description);
