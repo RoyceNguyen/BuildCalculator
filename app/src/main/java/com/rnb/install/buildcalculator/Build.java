@@ -7,21 +7,21 @@ package com.rnb.install.buildcalculator;
 public class Build {
     private int id;
     private String name;
-    private int weapon;
-    private int gear;
+    private long weapon;
+    private long gear;
 
     public Build(){
 
     }
 
-    public Build(int id, String name, int weapon, int gear){
+    public Build(int id, String name, long weapon, long gear){
         this.id = id;
         this.name = name;
         this.weapon = weapon;
         this.gear = gear;
     }
 
-    public Build(String name, int weapon, int gear){
+    public Build(String name, long weapon, long gear){
         this.name = name;
         this.weapon = weapon;
         this.gear = gear;
@@ -44,19 +44,19 @@ public class Build {
         this.name = name;
     }
 
-    public int getWeapon() {
+    public long getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(int weapon) {
+    public void setWeapon(long weapon) {
         this.weapon = weapon;
     }
 
-    public int getGear() {
+    public long getGear() {
         return gear;
     }
 
-    public void setGear(int gear) {
+    public void setGear(long gear) {
         this.gear = gear;
     }
 }
