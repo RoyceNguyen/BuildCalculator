@@ -39,7 +39,6 @@ public class BuildFragment extends Fragment {
     private String mParam2;
     ListView list;
     TextView build;
-    //galleryLayout;
 
 
     private OnFragmentInteractionListener mListener;
@@ -106,13 +105,10 @@ public class BuildFragment extends Fragment {
                 TextView build = (TextView) view.findViewById(R.id.build);
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
-                //if(galleryLayout.getVisibility() == View.GONE ||
-                        //galleryLayout.getVisibility() == View.INVISIBLE){
+
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
                     build.setText(((Build) list.getItemAtPosition(position)).getName());
-                    //update the text of the show more
-                    //galleryLayout.setVisibility(View.VISIBLE);
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
@@ -121,7 +117,6 @@ public class BuildFragment extends Fragment {
                 }
                 else{
                     build.setText("");
-                    //galleryLayout.setVisibility(View.GONE);
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
@@ -159,14 +154,15 @@ public class BuildFragment extends Fragment {
          * we populate the item_view's name TextView
          */
         public View getView(int position, View convertView, ViewGroup parent){
-            Build item = getItem(position);
+            final Build item = getItem(position);
 
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
             }
+
             TextView name = (TextView) convertView.findViewById(R.id.name);
             name.setText(item.getName());
-            //can add an intent here for an image to be clicked if we think of anything
+
             return convertView;
         }
     }

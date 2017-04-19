@@ -104,8 +104,8 @@ public class CreateBuildFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
-                Build build = new Build(name.getText().toString(), weapon.getSelectedItem().toString(), gear.getSelectedItem().toString());
+                //String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
+                Build build = new Build(name.getText().toString(), weapon.getSelectedItemId(), gear.getSelectedItemId());
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 db.addBuild(build);
                 db.close();
