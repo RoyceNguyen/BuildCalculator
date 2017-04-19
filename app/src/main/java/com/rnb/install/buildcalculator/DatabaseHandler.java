@@ -5,8 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by blaze on 2017-03-23.
@@ -69,32 +72,32 @@ public class DatabaseHandler extends SQLiteOpenHelper {
      * Create statements for all of our tables
      */
 
-    private static final String CREATE_WEAPON_TABLE = "CREATE TABLE" +
+    private static final String CREATE_WEAPON_TABLE = "CREATE TABLE " +
             TABLE_WEAPON + "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
-            COLUMN_NAME + " TEXT," +
+            COLUMN_NAME + " TEXT, " +
             COLUMN_ATTACKDAMAGE + " INTEGER, " +
-            COLUMN_ATTACKSPEED + " INTEGER, " +
+            COLUMN_ATTACKSPEED + " DECIMAL, " +
             COLUMN_CRIT + " INTEGER, " +
-            COLUMN_CRITDAMAGE + " INTEGER, " +
+            COLUMN_CRITDAMAGE + " INTEGER " +
             ")";
 
-    private static final String CREATE_GEAR_TABLE = "CREATE TABLE" +
+    private static final String CREATE_GEAR_TABLE = "CREATE TABLE " +
             TABLE_GEAR + "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
-            COLUMN_NAME + " TEXT," +
+            COLUMN_NAME + " TEXT, " +
             COLUMN_HEALTH + " INTEGER, " +
             COLUMN_ARMOR + " INTEGER, " +
-            COLUMN_MAGICRESIST + " INTEGER, " +
+            COLUMN_MAGICRESIST + " INTEGER " +
             ")";
 
     private static final String CREATE_BUILDS_TABLE = "CREATE TABLE " +
             TABLE_BUILDS + "(" +
             COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT ," +
-            COLUMN_NAME + " TEXT," +
-            COLUMN_WEAPON + " INTEGER REFERENCES" +
+            COLUMN_NAME + " TEXT, " +
+            COLUMN_WEAPON + " INTEGER REFERENCES " +
             TABLE_WEAPON + "("+COLUMN_ID+")," +
-            COLUMN_GEAR + " INTEGER REFERENCES" +
+            COLUMN_GEAR + " INTEGER REFERENCES " +
             TABLE_GEAR + "("+COLUMN_ID+")" +
             ")";
 
@@ -136,12 +139,12 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('WRATH', 6100, 1.3, 4, 500)");
         db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('TITANS', 4000, 2.3, 6, 350)");
 
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('MYSTICAL MAIL', 350, 400, 1300)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('OLYMPUS', 400, 390, 1500)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('BULWARK', 200, 500, 1300)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('ARCHON', 300, 300, 1700)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('ROBE', 150, 100, 4000)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, MAGICRESIST, ARMOR, HEALTH ) VALUES ('DRAGONSKIN', 500, 500, 500)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('MYSTICAL MAIL', 1300, 400, 350)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('OLYMPUS', 1500, 390, 400)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('BULWARK', 1300, 500, 250)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('ARCHON', 1700, 300, 300)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('ROBE', 4000, 100, 150)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('DRAGONSKIN', 600, 600, 600)");
     }
 
 

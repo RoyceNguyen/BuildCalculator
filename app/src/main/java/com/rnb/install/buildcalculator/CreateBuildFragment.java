@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 
 /**
@@ -98,6 +101,8 @@ public class CreateBuildFragment extends Fragment {
         //Apply the adapter to the spinner
         weapon.setAdapter(adapter1);
         gear.setAdapter(adapter2);
+
+        Log.d(TAG, "onCreateView: ");
 
 
         Button submit = (Button) view.findViewById(R.id.submitButton);
