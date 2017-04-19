@@ -183,8 +183,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, item.getName());
-        values.put(COLUMN_ARMOR, item.getArmor());
         values.put(COLUMN_HEALTH, item.getHealth());
+        values.put(COLUMN_ARMOR, item.getArmor());
         values.put(COLUMN_MAGICRESIST, item.getMagicResist());
         db.insert(TABLE_GEAR, null, values);
         db.close();
