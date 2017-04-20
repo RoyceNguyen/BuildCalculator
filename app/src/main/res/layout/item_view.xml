@@ -11,6 +11,8 @@
     cardView:cardElevation="2dp"
     cardView:cardUseCompatPadding="true">
 
+    <!-- Created by Blaze -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -59,13 +61,6 @@
                 android:gravity="center_horizontal"
                 android:textStyle="normal|italic"
                 android:layout_gravity="right"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                cardView:srcCompat="@drawable/ic_expand_more_black_24dp"
-                android:id="@+id/chevron"
-                android:layout_gravity="bottom|right"/>
         </LinearLayout>
 
     </LinearLayout>
