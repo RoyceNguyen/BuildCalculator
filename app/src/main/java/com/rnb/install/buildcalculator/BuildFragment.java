@@ -37,6 +37,10 @@ public class BuildFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    /**
+     * Fragment created by Blaze
+     */
     ListView list;
     TextView build;
 
@@ -74,12 +78,14 @@ public class BuildFragment extends Fragment {
         }
     }
 
+    //Create fragment manager
     FragmentManager fm;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_build, container, false);
         fm = getActivity().getSupportFragmentManager();
+        //Had to add this fab.show in order to create a build
         fab.show();
         fab.setImageResource(R.drawable.ic_add_black_24dp);
         fab.setOnClickListener(new View.OnClickListener() {

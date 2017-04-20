@@ -7,7 +7,8 @@ import android.preference.PreferenceFragment;
 import java.util.prefs.PreferenceChangeEvent;
 
 /**
- * Created by blaze on 2017-04-14.
+ * Created by Blaze on 2017-04-14.
+ * Allows user to change font size
  */
 
 public class SettingsActivity extends PreferenceActivity {
