@@ -74,10 +74,10 @@ public class CreateBuildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
-        name = (EditText) view.findViewById(R.id.buildName);
+      /*  name = (EditText) view.findViewById(R.id.buildName);
         weapon = (Spinner) view.findViewById(R.id.weaponName);
         gear = (EditText) view.findViewById(R.id.gearName);
-        clas
+
         Button submit = (Button) view.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,7 +91,7 @@ public class CreateBuildFragment extends Fragment {
                 fm.popBackStack();
             }
         });
-
+*/
         return view;
     }
 

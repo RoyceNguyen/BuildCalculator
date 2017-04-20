@@ -17,10 +17,12 @@
         android:text="Class of your choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/classChoice" />
+        android:id="@+id/classChoice"
+        android:textStyle="bold|italic"
+        android:textSize="18sp" />
 
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:id="@+id/classSpinner" />
 
@@ -28,10 +30,12 @@
         android:text="Weapon of choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/weaponChoice" />
+        android:id="@+id/weaponChoice"
+        android:textStyle="bold|italic"
+        android:textSize="18sp" />
 
     <Spinner
-        android:layout_width="match_parent"
+        android:layout_width="193dp"
         android:layout_height="wrap_content"
         android:id="@+id/weapSpinner" />
 
@@ -39,12 +43,14 @@
         android:text="Gear of Choice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/gearChoice" />
+        android:id="@+id/gearChoice"
+        android:textStyle="bold|italic"
+        android:textSize="18sp" />
 
     <Spinner
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gearSpinner" />
+        android:id="@+id/gearSpinner"
+        android:layout_width="193dp" />
 
     </GridLayout>
 <LinearLayout
@@ -63,9 +69,261 @@
         android:layout_height="wrap_content"
         android:id="@+id/resetButton" />
 </LinearLayout>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Physical Damage Gain:"
+                android:id="@+id/physDmg"
+                android:paddingTop="20dp"
+                android:textStyle="bold"
+                android:layout_columnSpan="1"
+                android:layout_column="0"
+                android:gravity="left"
+                 />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="fill_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:id="@+id/physDmgGain"
+                android:hint="0"
+                android:gravity="center_vertical|center_horizontal"
+                android:textAlignment="gravity" />
+
+
+        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Magic Damage Gain:"
+                    android:id="@+id/magDmg"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/magDmgGain"
+                    android:hint="0"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Attack Speed Gain:"
+                    android:id="@+id/aspeed"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/aspeedGain"
+                    android:hint="0"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Crit Gain:"
+                    android:id="@+id/crit"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/critGain"
+                    android:hint="0"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Crit Damage Gain:"
+                    android:id="@+id/critDmg"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/critDmgGain"
+                    android:hint="0"
+
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Health Gain:"
+                    android:id="@+id/health"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/healthGain"
+                    android:hint="0"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Armor Gain:"
+                    android:id="@+id/armor"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/armorGain"
+                    android:hint="0"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:text="Magic Resist Gain:"
+                    android:id="@+id/magRes"
+                    android:paddingTop="20dp"
+                    android:textStyle="bold"
+                    android:layout_columnSpan="1"
+                    android:layout_column="0"
+                    android:gravity="left"
+                    />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/magResGain"
+                    android:hint="0"
+
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textAlignment="gravity" />
+
+
+            </TableRow>
+        </LinearLayout>
+
+
 
     </ScrollView>
 
