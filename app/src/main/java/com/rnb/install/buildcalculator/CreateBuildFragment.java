@@ -1,15 +1,25 @@
 package com.rnb.install.buildcalculator;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+
+
+import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
+
 
 
 /**
@@ -32,9 +42,14 @@ public class CreateBuildFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
+
+    //Add EditText name, for user to enter in their own build name
     EditText name;
-    EditText weapon;
-    EditText gear;
+    //Add Spinner for both weapon and gear for user to choose from list
+    Spinner weapon;
+    Spinner gear;
+    //EditText weapon;
+    //EditText gear;
 
     public CreateBuildFragment() {
         // Required empty public constructor
@@ -74,14 +89,35 @@ public class CreateBuildFragment extends Fragment {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
         name = (EditText) view.findViewById(R.id.buildName);
-        weapon = (EditText) view.findViewById(R.id.weaponName);
-        gear = (EditText) view.findViewById(R.id.gearName);
+        weapon = (Spinner) view.findViewById(R.id.weaponSpinner);
+        gear = (Spinner) view.findViewById(R.id.gearSpinner);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
+        ArrayList<Item> weaponList = db.getAllWeapons();
+        ArrayList<Item> gearList = db.getAllGears();
+
+        //add styling to spinner to format the text by column name
+        //Cursor theCursor = (Cursor)weaponList.getSelectedItem();
+        //Log.e("spnERRtest", "Item: " + theCursor.getString(theCursor.getColumnIndex(db.ProductSchema.COLUMN_NAME)));
+        db.closeDB();
+
+        //Adding Spinner code to grab the correct items to display
+        //Create an ArrayAdapter to grab context and use weaponList and gearList
+        ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, weaponList);
+        ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, gearList);
+        //Apply the adapter to the spinner
+        weapon.setAdapter(adapter1);
+        gear.setAdapter(adapter2);
+
+        Log.d(TAG, "onCreateView: ");
+
         Button submit = (Button) view.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
-                Build build = new Build(name.getText().toString(), weapon.getText().toString(), gear.getText().toString());
+                //String buildAll = name.getText().toString() + "," + weapon.getText().toString() + "," + gear.getText().toString();
+                Build build = new Build(name.getText().toString(), weapon.getSelectedItemId(), gear.getSelectedItemId());
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 db.addBuild(build);
                 db.close();

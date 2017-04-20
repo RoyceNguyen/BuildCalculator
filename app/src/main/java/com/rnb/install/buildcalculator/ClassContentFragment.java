@@ -116,7 +116,7 @@ public class ClassContentFragment extends Fragment {
             //adding content to the viewpager
             switch(position){
                 case 0:
-                    return ClassFragment.newInstance("Warrior",R.drawable.warrior, "Front line melee class , generally play the tank role for the party. \n");
+                    return ClassFragment.newInstance("Warrior",R.drawable.warrior, getActivity().getResources().getString(R.string.warrior_description));
                 case 1:
                     return ClassFragment.newInstance("Mage",R.drawable.mage, "Long range magic damage dealer , specializes in casting spells and dealing area of effect damage .\n");
                 case 2:

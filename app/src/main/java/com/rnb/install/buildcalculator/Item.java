@@ -6,8 +6,9 @@ package com.rnb.install.buildcalculator;
 
 public class Item {
 
+    private int id;
     private String name;
-    private int attackSpeed;
+    private double attackSpeed;
     private int attackDamage;
     private int magicDamage;
     private int crit;
@@ -20,7 +21,8 @@ public class Item {
 
     }
 
-    public Item(String name, int attackDamage, int crit, int critDamage, int attackSpeed){
+    public Item(int id, String name, int attackDamage, int crit, int critDamage, double attackSpeed){
+        this.id = id;
         this.name = name;
         this.attackDamage = attackDamage;
         this.attackSpeed = attackSpeed;
@@ -28,18 +30,28 @@ public class Item {
         this.critDamage = critDamage;
     }
 
-    public Item(String name, int magicDamage, int crit, int critDamage){
+    /*public Item(int id, String name, int magicDamage, int crit, int critDamage){
+        this.id = id;
         this.name = name;
         this.critDamage = critDamage;
         this.crit = crit;
         this.magicDamage = magicDamage;
-    }
+    }*/
 
-    public Item(int health, int armor, int magicResist, String name){
+    public Item(int id, String name, int health, int armor, int magicResist){
+        this.id = id;
         this.name = name;
         this.health = health;
         this.armor = armor;
         this.magicResist = magicResist;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -50,11 +62,11 @@ public class Item {
         this.name = name;
     }
 
-    public int getAttackSpeed() {
+    public double getAttackSpeed() {
         return attackSpeed;
     }
 
-    public void setAttackSpeed(int attackSpeed) {
+    public void setAttackSpeed(double attackSpeed) {
         this.attackSpeed = attackSpeed;
     }
 
