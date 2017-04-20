@@ -14,9 +14,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
+
 
 
 /**
@@ -38,6 +40,7 @@ public class CreateBuildFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
 
     //Add EditText name, for user to enter in their own build name
     EditText name;
@@ -84,26 +87,6 @@ public class CreateBuildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
-        name = (EditText) view.findViewById(R.id.buildName);
-        weapon = (Spinner) view.findViewById(R.id.weaponSpinner);
-        gear = (Spinner) view.findViewById(R.id.gearSpinner);
-
-        DatabaseHandler db = new DatabaseHandler(getContext());
-        //Use ArrayList on Item to get all the weapons and gears seperately to populate Spinners
-        ArrayList<Item> weaponList = db.getAllWeapons();
-        ArrayList<Item> gearList = db.getAllGears();
-        db.closeDB();
-
-        //Adding Spinner code to grab the correct items to display
-        //Create an ArrayAdapter to grab context and use weaponList and gearList
-        ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, weaponList);
-        ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, gearList);
-        //Apply the adapter to the spinner
-        weapon.setAdapter(adapter1);
-        gear.setAdapter(adapter2);
-
-        Log.d(TAG, "onCreateView: ");
-
 
         Button submit = (Button) view.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
