@@ -114,10 +114,15 @@ public class BuildFragment extends Fragment {
                 TextView build = (TextView) view.findViewById(R.id.build);
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
-
+                //open a database connection here
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                Item wep = db.getWeapon(buildslist.get(position).getWeapon());
+                wep.getName();
+                db.closeDB();
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
                     build.setText(((Build) list.getItemAtPosition(position)).getName());
+                    build.setText(((Build) list.getItemAtPosition(position)).getWeapon());
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
