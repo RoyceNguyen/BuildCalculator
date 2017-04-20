@@ -126,7 +126,7 @@ public class CreateBuildFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Build build = new Build(name.getText().toString(), weapon.getSelectedItemId(), gear.getSelectedItemId());
+                Build build = new Build(name.getText().toString(), (int) weapon.getSelectedItemId(), (int)gear.getSelectedItemId());
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 db.addBuild(build);
                 db.close();
