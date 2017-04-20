@@ -32,12 +32,6 @@
                 android:layout_weight="1"
                 android:fontFamily="serif"/>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                cardView:srcCompat="@drawable/ic_event_available_black_24dp"
-                android:id="@+id/location"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
@@ -61,6 +55,13 @@
                 android:gravity="center_horizontal"
                 android:textStyle="normal|italic"
                 android:layout_gravity="right"/>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                cardView:srcCompat="@drawable/ic_expand_more_black_24dp"
+                android:id="@+id/chevron"
+                android:layout_gravity="bottom|right"/>
         </LinearLayout>
 
     </LinearLayout>
