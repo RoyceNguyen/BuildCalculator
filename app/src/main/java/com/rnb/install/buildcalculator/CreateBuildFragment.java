@@ -15,9 +15,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+
 import java.util.ArrayList;
 
 import static android.content.ContentValues.TAG;
+
 
 
 /**
@@ -39,6 +41,7 @@ public class CreateBuildFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
 
     //Add EditText name, for user to enter in their own build name
     EditText name;
