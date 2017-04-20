@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 import static com.rnb.install.buildcalculator.MainActivity.fab;
@@ -163,12 +165,22 @@ public class BuildFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent){
             final Build item = getItem(position);
 
+           // DatabaseHandler db = new DatabaseHandler(getContext());
+            //ArrayList<Item> weaponList = db.getAllWeapons();
+
+           // ArrayList<String> weaponNames = new ArrayList<String>();
+            //for (int i = 0; i < weaponList.size(); i++) {
+             //   weaponNames.add(weaponList.get(i).getName());
+           // }
+           // ArrayList<Item> weaponList = db.getAllWeapons();
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
             }
 
             TextView name = (TextView) convertView.findViewById(R.id.name);
             name.setText(item.getName());
+            //TextView weaponName = (TextView) convertView.findViewById(R.id.weaponSpinner);
+            //weaponName.setText(weaponName.getText());
 
             return convertView;
         }

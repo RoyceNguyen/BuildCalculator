@@ -318,7 +318,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public ArrayList<Item> getAllGears() {
         ArrayList<Item> gearsList = new ArrayList<Item>();
-        String selectQuery = "SELECT * FROM " + TABLE_WEAPON;
+        String selectQuery = "SELECT * FROM " + TABLE_GEAR;
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
