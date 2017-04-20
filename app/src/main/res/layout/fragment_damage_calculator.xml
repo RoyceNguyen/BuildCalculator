@@ -70,19 +70,15 @@
         android:id="@+id/resetButton" />
 </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="2"
+        android:useDefaultMargins="true">
 
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="1">
+
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,15 +88,13 @@
                 android:id="@+id/physDmg"
                 android:paddingTop="20dp"
                 android:textStyle="bold"
-                android:layout_columnSpan="1"
-                android:layout_column="0"
                 android:gravity="left"
-                 />
+                android:paddingStart="40dp" />
 
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="fill_parent"
+                android:layout_width="144dp"
+                android:layout_height="match_parent"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:id="@+id/physDmgGain"
                 android:hint="0"
@@ -108,41 +102,7 @@
                 android:textAlignment="gravity" />
 
 
-        </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="Magic Damage Gain:"
-                    android:id="@+id/magDmg"
-                    android:paddingTop="20dp"
-                    android:textStyle="bold"
-                    android:layout_columnSpan="1"
-                    android:layout_column="0"
-                    android:gravity="left"
-                    />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:id="@+id/magDmgGain"
-                    android:hint="0"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:textAlignment="gravity" />
-
-
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -155,24 +115,17 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/aspeedGain"
                     android:hint="0"
                     android:gravity="center_vertical|center_horizontal"
                     android:textAlignment="gravity" />
 
-
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -185,12 +138,11 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/critGain"
                     android:hint="0"
@@ -198,11 +150,6 @@
                     android:textAlignment="gravity" />
 
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -215,12 +162,11 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/critDmgGain"
                     android:hint="0"
@@ -229,11 +175,7 @@
                     android:textAlignment="gravity" />
 
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -246,12 +188,11 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/healthGain"
                     android:hint="0"
@@ -259,11 +200,8 @@
                     android:textAlignment="gravity" />
 
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
+
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -276,12 +214,11 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/armorGain"
                     android:hint="0"
@@ -289,11 +226,7 @@
                     android:textAlignment="gravity" />
 
 
-            </TableRow>
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:weightSum="1">
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -306,12 +239,11 @@
                     android:layout_columnSpan="1"
                     android:layout_column="0"
                     android:gravity="left"
-                    />
+                    android:paddingStart="40dp" />
 
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_width="144dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:id="@+id/magResGain"
                     android:hint="0"
@@ -320,11 +252,9 @@
                     android:textAlignment="gravity" />
 
 
-            </TableRow>
-        </LinearLayout>
+      </GridLayout>
 
 
 
-    </ScrollView>
 
 </LinearLayout>
