@@ -28,10 +28,10 @@
         android:layout_row="0" />
 
     <TextView
-        android:text="Class"
+        android:text="Weapon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/classLabel"
+        android:id="@+id/weaponLabel"
         android:layout_column="0"
         android:textSize="22sp"
         android:layout_row="1"/>
@@ -44,10 +44,10 @@
 
 
     <TextView
-        android:text="Weapon"
+        android:text="Gear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/weaponLabel"
+        android:id="@+id/gearLabel"
         android:layout_column="0"
         android:textSize="22sp"
         android:layout_row="2"/>
