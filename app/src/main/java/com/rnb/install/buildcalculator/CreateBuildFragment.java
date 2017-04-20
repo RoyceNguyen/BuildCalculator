@@ -1,6 +1,7 @@
 package com.rnb.install.buildcalculator;
 
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -87,6 +88,29 @@ public class CreateBuildFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view  = inflater.inflate(R.layout.fragment_create_build, container, false);
+        name = (EditText) view.findViewById(R.id.buildName);
+        weapon = (Spinner) view.findViewById(R.id.weaponSpinner);
+        gear = (Spinner) view.findViewById(R.id.gearSpinner);
+
+        DatabaseHandler db = new DatabaseHandler(getContext());
+        //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
+        ArrayList<Item> weaponList = db.getAllWeapons();
+        ArrayList<Item> gearList = db.getAllGears();
+
+        //add styling to spinner to format the text by column name
+        //Cursor theCursor = (Cursor)weaponList.getSelectedItem();
+        //Log.e("spnERRtest", "Item: " + theCursor.getString(theCursor.getColumnIndex(db.ProductSchema.COLUMN_NAME)));
+        db.closeDB();
+
+        //Adding Spinner code to grab the correct items to display
+        //Create an ArrayAdapter to grab context and use weaponList and gearList
+        ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, weaponList);
+        ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item, gearList);
+        //Apply the adapter to the spinner
+        weapon.setAdapter(adapter1);
+        gear.setAdapter(adapter2);
+
+        Log.d(TAG, "onCreateView: ");
 
         Button submit = (Button) view.findViewById(R.id.submitButton);
         submit.setOnClickListener(new View.OnClickListener() {
