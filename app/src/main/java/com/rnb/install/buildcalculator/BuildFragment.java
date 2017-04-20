@@ -80,6 +80,7 @@ public class BuildFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_build, container, false);
         fm = getActivity().getSupportFragmentManager();
+        fab.show();
         fab.setImageResource(R.drawable.ic_add_black_24dp);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

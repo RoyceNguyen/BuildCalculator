@@ -53,7 +53,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String COLUMN_CRIT = "crit";
     private static final String COLUMN_CRITDAMAGE = "critdamage";
     private static final String COLUMN_HEALTH = "health";
-    private static final String COLUMN_ARMOR = "aromr";
+    private static final String COLUMN_ARMOR = "ARMOR";
     private static final String COLUMN_MAGICRESIST = "magicresist";
 
 

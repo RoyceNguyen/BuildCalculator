@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity
             intent.setData(Uri.parse("mailto:"));
             intent.putExtra(Intent.EXTRA_EMAIL, emailaddresses);
             intent.putExtra(Intent.EXTRA_SUBJECT, "Question from the Build Calculator app");
-            intent.putExtra(Intent.EXTRA_TEXT, "Hello , I have some questions about...");
+            intent.putExtra(Intent.EXTRA_TEXT, "Hello, I have some questions about...");
             if(intent.resolveActivity(getPackageManager()) != null){
                 startActivity(intent);
             } else {
