@@ -8,51 +8,23 @@
 
     <!-- Creating gridlayout with spinners to select classes , weapon and gear -->
 
-    <GridLayout
+
+    <TextView
+        android:text="Select A Build"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:useDefaultMargins="true">
-    <TextView
-        android:text="Class of your choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/classChoice"
+        android:id="@+id/buildChoice"
         android:textStyle="bold|italic"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:gravity="center_vertical|center_horizontal" />
 
     <Spinner
-        android:layout_width="193dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/classSpinner" />
+        android:id="@+id/buildSpinner" />
 
-    <TextView
-        android:text="Weapon of choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/weaponChoice"
-        android:textStyle="bold|italic"
-        android:textSize="18sp" />
 
-    <Spinner
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/weapSpinner" />
 
-    <TextView
-        android:text="Gear of Choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gearChoice"
-        android:textStyle="bold|italic"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:layout_height="wrap_content"
-        android:id="@+id/gearSpinner"
-        android:layout_width="193dp" />
-
-    </GridLayout>
     <!--creating buttons to calculate and reset the calculator-->
 <LinearLayout
     android:layout_height="wrap_content"
