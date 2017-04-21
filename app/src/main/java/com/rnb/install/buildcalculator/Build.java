@@ -45,7 +45,7 @@ public class Build {
         this.name = name;
     }
 
-    public long getWeapon() {
+    public int getWeapon() {
         return weapon;
     }
 
@@ -53,7 +53,7 @@ public class Build {
         this.weapon = weapon;
     }
 
-    public long getGear() {
+    public int getGear() {
         return gear;
     }
 
