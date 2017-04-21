@@ -60,4 +60,9 @@ public class Build {
     public void setGear(long gear) {
         this.gear = gear;
     }
+
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
