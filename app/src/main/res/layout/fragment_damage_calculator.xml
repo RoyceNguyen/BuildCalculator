@@ -6,71 +6,26 @@
     tools:context="com.rnb.install.buildcalculator.DamageCalculator"
     android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Creating gridlayout with spinners to select classes , weapon and gear -->
 
-    <GridLayout
+
+    <TextView
+        android:text="Select A Build"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:useDefaultMargins="true">
-    <TextView
-        android:text="Class of your choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/classChoice"
+        android:id="@+id/buildChoice"
         android:textStyle="bold|italic"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:gravity="center_vertical|center_horizontal" />
 
     <Spinner
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/classSpinner" />
-
-    <TextView
-        android:text="Weapon of choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/weaponChoice"
-        android:textStyle="bold|italic"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:layout_width="193dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/weapSpinner" />
-
-    <TextView
-        android:text="Gear of Choice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/gearChoice"
-        android:textStyle="bold|italic"
-        android:textSize="18sp" />
-
-    <Spinner
-        android:layout_height="wrap_content"
-        android:id="@+id/gearSpinner"
-        android:layout_width="193dp" />
-
-    </GridLayout>
-<LinearLayout
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_width="386dp">
-    <Button
-        android:text="Calculate"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/calculateButton" />
-
-    <Button
-        android:text="Reset"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/resetButton" />
-</LinearLayout>
+        android:id="@+id/buildSpinner" />
 
 
+
+    <!--creating textviews in a gridlayout to output the calculations -->
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

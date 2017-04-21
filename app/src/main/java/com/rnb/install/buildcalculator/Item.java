@@ -1,7 +1,9 @@
 package com.rnb.install.buildcalculator;
 
 /**
- * Created by blaze on 2017-04-14.
+ * Created by Blaze on 2017-04-14.
+ * Creating Item class for our Database
+ * Using two different constructs, one is for Weapon and one is for Gear
  */
 
 public class Item {
@@ -29,14 +31,6 @@ public class Item {
         this.crit = crit;
         this.critDamage = critDamage;
     }
-
-    /*public Item(int id, String name, int magicDamage, int crit, int critDamage){
-        this.id = id;
-        this.name = name;
-        this.critDamage = critDamage;
-        this.crit = crit;
-        this.magicDamage = magicDamage;
-    }*/
 
     public Item(int id, String name, int health, int armor, int magicResist){
         this.id = id;

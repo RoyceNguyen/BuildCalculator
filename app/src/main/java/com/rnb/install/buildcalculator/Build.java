@@ -1,7 +1,8 @@
 package com.rnb.install.buildcalculator;
 
 /**
- * Created by web on 2017-03-23.
+ * Created by Blaze on 2017-03-23.
+ * Creating Build class to store the users Build that they create.
  */
 
 public class Build {
@@ -58,5 +59,10 @@ public class Build {
 
     public void setGear(long gear) {
         this.gear = gear;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }
