@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -116,13 +117,16 @@ public class BuildFragment extends Fragment {
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
                 //open a database connection here
                 DatabaseHandler db = new DatabaseHandler(getContext());
+                Log.d("WEPCONTENTS", "" + buildslist.size()+"");
                 Item wep = db.getWeapon(buildslist.get(position).getWeapon());
-                wep.getName();
                 db.closeDB();
+
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
                     build.setText(((Build) list.getItemAtPosition(position)).getName());
-                    build.setText(((Build) list.getItemAtPosition(position)).getWeapon());
+                    if (wep != null) {
+                        build.setText(wep.getName());
+                    }
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image

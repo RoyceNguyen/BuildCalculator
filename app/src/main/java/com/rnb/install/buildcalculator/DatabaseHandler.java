@@ -173,6 +173,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, build.getName());
+        Log.d("addBuildWeapValue", build.getWeapon() + "");
         values.put(COLUMN_WEAPON, build.getWeapon());
         values.put(COLUMN_GEAR, build.getGear());
         db.insert(TABLE_BUILDS, null, values);
@@ -252,15 +253,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ArrayList<Build> buildsList = new ArrayList<Build>();
         String selectQuery = "SELECT * FROM " + TABLE_BUILDS;
 
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
             do {
                 Build build = new Build();
                 build.setId(Integer.parseInt(cursor.getString(0)));
+                Log.d("getAllBuildsValue", cursor.getString(0)+ "");
                 build.setName(cursor.getString(1));
+                Log.d("getAllBuildsValue", cursor.getString(1)+ "");
                 build.setWeapon(cursor.getInt(2));
+                Log.d("getAllBuildsValue", cursor.getInt(2)+ "");
                 build.setGear(cursor.getInt(3));
+                Log.d("getAllBuildsValue", cursor.getInt(3)+ "");
                 buildsList.add(build);
             } while (cursor.moveToNext());
         }
@@ -270,14 +275,17 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creating getWeapon and getAllWeapons
     public Item getWeapon(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_WEAPON,
-                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_ATTACKDAMAGE, COLUMN_ATTACKSPEED, COLUMN_CRIT, COLUMN_CRITDAMAGE}, COLUMN_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-
-        if (cursor != null)
-            cursor.moveToFirst();
-        Item item = new Item(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
+        Item item = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_WEAPON + " WHERE " + COLUMN_ID  + "="  + id, null);
+                //TABLE_WEAPON,
+                //new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_ATTACKDAMAGE, COLUMN_ATTACKSPEED, COLUMN_CRIT, COLUMN_CRITDAMAGE}, COLUMN_ID + "=?",
+                //new String[] { String.valueOf(id) }, null, null, null, null);
+        Log.d("GETWEAP", cursor.toString());
+        if (cursor != null && cursor.moveToFirst()) {
+            Log.d("GETWEAP", "GOT HERE 2");
+            item = new Item(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
+        }
         return item;
     }
 

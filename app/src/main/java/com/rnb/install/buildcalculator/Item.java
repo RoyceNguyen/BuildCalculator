@@ -119,4 +119,9 @@ public class Item {
     public void setMagicResist(int magicResist) {
         this.magicResist = magicResist;
     }
+
+    @Override
+    public String toString() {
+        return this.id + " " + this.name + " "  +this.attackSpeed;
+    }
 }
