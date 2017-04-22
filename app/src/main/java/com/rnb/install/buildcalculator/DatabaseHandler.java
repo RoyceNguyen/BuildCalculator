@@ -280,9 +280,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 //TABLE_WEAPON,
                 //new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_ATTACKDAMAGE, COLUMN_ATTACKSPEED, COLUMN_CRIT, COLUMN_CRITDAMAGE}, COLUMN_ID + "=?",
                 //new String[] { String.valueOf(id) }, null, null, null, null);
-        Log.d("GETWEAP", cursor.toString());
+        //Log.d("GETWEAP", cursor.toString());
         if (cursor != null && cursor.moveToFirst()) {
-            Log.d("GETWEAP", "GOT HERE 2");
+            //Log.d("GETWEAP", "GOT HERE 2");
             item = new Item(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
         }
@@ -313,14 +313,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creating getGear and getAllGear
     public Item getGear(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
+        Item item = null;
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_GEAR + " WHERE " + COLUMN_ID + "=" + id + "+1 ", null);
+        /*
         Cursor cursor = db.query(TABLE_GEAR,
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_HEALTH, COLUMN_ARMOR, COLUMN_MAGICRESIST}, COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
+*/
+        if (cursor != null && cursor.moveToFirst()) {
 
-        if (cursor != null)
-            cursor.moveToFirst();
-        Item item = new Item(Integer.parseInt(cursor.getString(0)),
-                cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
+            item = new Item(Integer.parseInt(cursor.getString(0)),
+                    cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
+
+        }
         return item;
     }
 
