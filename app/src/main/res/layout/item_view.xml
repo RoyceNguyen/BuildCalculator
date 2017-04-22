@@ -11,6 +11,8 @@
     cardView:cardElevation="2dp"
     cardView:cardUseCompatPadding="true">
 
+    <!-- Created by Blaze -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,19 +32,20 @@
                 android:layout_weight="1"
                 android:fontFamily="serif"/>
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                cardView:srcCompat="@drawable/ic_event_available_black_24dp"
-                android:id="@+id/location"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/build"
-            android:textStyle="normal|italic"/>
+            android:textStyle="normal|italic"
+            android:gravity="center_vertical|center_horizontal" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:id="@+id/gearChoice"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical|center_horizontal" />
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -37,8 +40,11 @@ public class BuildFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    /**
+     * Fragment created by Blaze
+     */
     ListView list;
-    TextView build;
 
 
     private OnFragmentInteractionListener mListener;
@@ -74,12 +80,14 @@ public class BuildFragment extends Fragment {
         }
     }
 
+    //Create fragment manager
     FragmentManager fm;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_build, container, false);
         fm = getActivity().getSupportFragmentManager();
+        //Had to add this fab.show in order to create a build
         fab.show();
         fab.setImageResource(R.drawable.ic_add_black_24dp);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -104,12 +112,27 @@ public class BuildFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView build = (TextView) view.findViewById(R.id.build);
+                TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
+                //open a database connection here
+                DatabaseHandler db = new DatabaseHandler(getContext());
+               // Log.d("WEPCONTENTS", "" + buildslist.size()+"");
+                Item wep = db.getWeapon(buildslist.get(position).getWeapon());
+                Item gear = db.getGear(buildslist.get(position).getGear());
+                db.closeDB();
+
 
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
                     build.setText(((Build) list.getItemAtPosition(position)).getName());
+                    if (wep != null) {
+                        build.setText(wep.getName());
+                    }
+                    gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
+                    if (gear != null) {
+                       gearChoice.setText(gear.getName());
+                    }
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
@@ -157,12 +180,22 @@ public class BuildFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent){
             final Build item = getItem(position);
 
+           // DatabaseHandler db = new DatabaseHandler(getContext());
+            //ArrayList<Item> weaponList = db.getAllWeapons();
+
+           // ArrayList<String> weaponNames = new ArrayList<String>();
+            //for (int i = 0; i < weaponList.size(); i++) {
+             //   weaponNames.add(weaponList.get(i).getName());
+           // }
+           // ArrayList<Item> weaponList = db.getAllWeapons();
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
             }
 
             TextView name = (TextView) convertView.findViewById(R.id.name);
             name.setText(item.getName());
+            //TextView weaponName = (TextView) convertView.findViewById(R.id.weaponSpinner);
+            //weaponName.setText(weaponName.getText());
 
             return convertView;
         }

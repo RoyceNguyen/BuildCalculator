@@ -30,6 +30,9 @@ public class ClassContentFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    /**
+     * Creating private variables for the section pager adapter and the view pager itself
+     */
     private ViewPager viewPager;
     private SectionPagerAdapter sectionPagerAdapter;
     private OnFragmentInteractionListener mListener;
@@ -70,11 +73,18 @@ public class ClassContentFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_class_content, container, false);
-        //creating the viewpager
+        /**
+         * creating the viewpager and applying the pager adapter on the view pager
+         * applying pager transformer on the view pager
+         */
+
         sectionPagerAdapter = new SectionPagerAdapter(getChildFragmentManager());
         viewPager = (ViewPager) view.findViewById(R.id.classcontent);
         viewPager.setAdapter(sectionPagerAdapter);
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        /**
+         * creating the left and right buttons and set them up to go through images in the view pager
+         */
         ImageButton leftButton = (ImageButton) view.findViewById(R.id.left);
         ImageButton rightButton = (ImageButton) view.findViewById(R.id.right);
 
@@ -113,7 +123,9 @@ public class ClassContentFragment extends Fragment {
             super(fm);
         }
         public Fragment getItem(int position){
-            //adding content to the viewpager
+/**
+ *putting content , images and description into the viewPager
+ */
             switch(position){
                 case 0:
                     return ClassFragment.newInstance("Warrior",R.drawable.warrior, getActivity().getResources().getString(R.string.warrior_description));
@@ -135,6 +147,9 @@ public class ClassContentFragment extends Fragment {
 
     }
 
+    /**
+     * creating page transformers
+     */
     public class DepthPageTransformer implements ViewPager.PageTransformer {
         private static final float MIN_SCALE = 0.75f;
 
