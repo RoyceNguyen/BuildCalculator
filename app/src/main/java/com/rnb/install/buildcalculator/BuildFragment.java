@@ -116,7 +116,7 @@ public class BuildFragment extends Fragment {
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
                 //open a database connection here
                 DatabaseHandler db = new DatabaseHandler(getContext());
-                Log.d("WEPCONTENTS", "" + buildslist.size()+"");
+               // Log.d("WEPCONTENTS", "" + buildslist.size()+"");
                 Item wep = db.getWeapon(buildslist.get(position).getWeapon());
                 //Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
