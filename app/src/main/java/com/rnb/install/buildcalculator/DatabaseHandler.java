@@ -313,7 +313,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     //Creating getGear and getAllGear
     public Item getGear(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(TABLE_WEAPON,
+        Cursor cursor = db.query(TABLE_GEAR,
                 new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_HEALTH, COLUMN_ARMOR, COLUMN_MAGICRESIST}, COLUMN_ID + "=?",
                 new String[] { String.valueOf(id) }, null, null, null, null);
 

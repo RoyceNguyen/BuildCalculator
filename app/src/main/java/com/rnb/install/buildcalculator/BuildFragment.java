@@ -45,7 +45,6 @@ public class BuildFragment extends Fragment {
      * Fragment created by Blaze
      */
     ListView list;
-    TextView build;
 
 
     private OnFragmentInteractionListener mListener;
@@ -119,7 +118,9 @@ public class BuildFragment extends Fragment {
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 Log.d("WEPCONTENTS", "" + buildslist.size()+"");
                 Item wep = db.getWeapon(buildslist.get(position).getWeapon());
+                //Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
+
 
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
@@ -127,6 +128,9 @@ public class BuildFragment extends Fragment {
                     if (wep != null) {
                         build.setText(wep.getName());
                     }
+                    //if (gear != null) {
+                      // build.setText(gear.getName());
+                    //}
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
