@@ -24,25 +24,6 @@
         android:id="@+id/buildSpinner" />
 
 
-
-    <!--creating buttons to calculate and reset the calculator-->
-<LinearLayout
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:layout_width="386dp">
-    <Button
-        android:text="Calculate"
-        android:layout_width="187dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/calculateButton" />
-
-    <Button
-        android:text="Reset"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/resetButton" />
-</LinearLayout>
-
     <!--creating textviews in a gridlayout to output the calculations -->
     <GridLayout
         android:layout_width="wrap_content"
@@ -224,10 +205,6 @@
                     android:gravity="center_vertical|center_horizontal"
                     android:textAlignment="gravity" />
 
-
       </GridLayout>
-
-
-
 
 </LinearLayout>
