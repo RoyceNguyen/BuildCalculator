@@ -24,6 +24,8 @@
         android:id="@+id/buildSpinner" />
 
 
+    =======
+>>>>>>> staging
     <!--creating textviews in a gridlayout to output the calculations -->
     <GridLayout
         android:layout_width="wrap_content"
