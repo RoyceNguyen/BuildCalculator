@@ -112,13 +112,14 @@ public class BuildFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView build = (TextView) view.findViewById(R.id.build);
+                TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
                 //open a database connection here
                 DatabaseHandler db = new DatabaseHandler(getContext());
-                Log.d("WEPCONTENTS", "" + buildslist.size()+"");
+               // Log.d("WEPCONTENTS", "" + buildslist.size()+"");
                 Item wep = db.getWeapon(buildslist.get(position).getWeapon());
-                //Item gear = db.getGear(buildslist.get(position).getGear());
+                Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
 
 
@@ -128,9 +129,10 @@ public class BuildFragment extends Fragment {
                     if (wep != null) {
                         build.setText(wep.getName());
                     }
-                    //if (gear != null) {
-                      // build.setText(gear.getName());
-                    //}
+                    gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
+                    if (gear != null) {
+                       gearChoice.setText(gear.getName());
+                    }
                     //update the text of the show more
                     details.setText("Click to show less");
                     //update the chevron image
