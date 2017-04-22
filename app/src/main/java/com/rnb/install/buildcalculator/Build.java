@@ -1,27 +1,28 @@
 package com.rnb.install.buildcalculator;
 
 /**
- * Created by web on 2017-03-23.
+ * Created by Blaze on 2017-03-23.
+ * Creating Build class to store the users Build that they create.
  */
 
 public class Build {
     private int id;
     private String name;
-    private long weapon;
-    private long gear;
+    private int weapon;
+    private int gear;
 
     public Build(){
 
     }
 
-    public Build(int id, String name, long weapon, long gear){
+    public Build(int id, String name, int weapon, int gear){
         this.id = id;
         this.name = name;
         this.weapon = weapon;
         this.gear = gear;
     }
 
-    public Build(String name, long weapon, long gear){
+    public Build(String name, int weapon, int gear){
         this.name = name;
         this.weapon = weapon;
         this.gear = gear;
@@ -44,19 +45,24 @@ public class Build {
         this.name = name;
     }
 
-    public long getWeapon() {
+    public int getWeapon() {
         return weapon;
     }
 
-    public void setWeapon(long weapon) {
+    public void setWeapon(int weapon) {
         this.weapon = weapon;
     }
 
-    public long getGear() {
+    public int getGear() {
         return gear;
     }
 
-    public void setGear(long gear) {
+    public void setGear(int gear) {
         this.gear = gear;
+    }
+
+    @Override
+    public String toString() {
+        return this.name;
     }
 }

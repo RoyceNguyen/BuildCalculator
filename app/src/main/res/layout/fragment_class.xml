@@ -8,7 +8,7 @@
     android:paddingLeft="40dp"
     android:paddingRight="40dp">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!--adding in textviews for the class title and description and images for imageview -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

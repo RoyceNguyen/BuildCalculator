@@ -26,13 +26,17 @@ public class ClassFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    //add in another parameter
+    /**
+     * Adding in another ARG_PARAM
+     */
     private static final String ARG_PARAM3 = "param3";
 
     // TODO: Rename and change types of parameters
     private String mParam1;
     private int mParam2;
-    //Create a location to store it
+    /**
+     * creating a location to store the new param
+      */
     private String mParam3;
     private OnFragmentInteractionListener mListener;
 
@@ -49,6 +53,7 @@ public class ClassFragment extends Fragment {
      * @return A new instance of fragment ClassFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     public static ClassFragment newInstance(String param1, int param2 , String param3) {
         ClassFragment fragment = new ClassFragment();
         Bundle args = new Bundle();
@@ -72,16 +77,24 @@ public class ClassFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
+        /**
+         *         Inflate the layout for this fragment
+          */
+
+
         View view = inflater.inflate(R.layout.fragment_class, container, false);
-        //check whether or not title and description is empty , if it is , set the next to mParam1 and mParam2
+        /**
+         * check whether or not title and description is empty , if it is , set the next to mParam1 and mParam2
+         */
         if(mParam1 != null){
             TextView text = (TextView) view.findViewById(R.id.title);
             text.setText(mParam1);
         }
         if(mParam2 != 0){
             ImageView image = (ImageView) view.findViewById(R.id.itemImage);
+            /**
+             * Implementing Picasso into the images of ViewPager
+             */
             Picasso.with(getContext())
                     .load(mParam2)
                     .resize(500,650)

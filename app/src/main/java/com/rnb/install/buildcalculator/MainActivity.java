@@ -130,7 +130,9 @@ public class MainActivity extends AppCompatActivity
             tran.setCustomAnimations(R.anim.fade_in, R.anim.fade_out);
             tran.replace(R.id.content_main, new DamageCalculator());
             tran.commit();
-
+/**
+ * creating an intent to email the developers of the app
+ */
         } else if (id == R.id.nav_send) {
             String[] emailaddresses = {email};
             Intent intent = new Intent(Intent.ACTION_SENDTO);
@@ -144,7 +146,9 @@ public class MainActivity extends AppCompatActivity
                 Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No installed software to complete the task", Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
-
+/**
+ * creating an intent to search on google "character builds"
+ */
         }else if (id == R.id.nav_search) {
             Intent intent = new Intent(Intent.ACTION_SEARCH);
             intent.putExtra(SearchManager.QUERY, query);
@@ -154,6 +158,9 @@ public class MainActivity extends AppCompatActivity
                 Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), "No installed software to complete the task", Snackbar.LENGTH_SHORT);
                 snackbar.show();
             }
+            /**
+             * creating an intent to connect to the webpage "rnbcalculator.com"
+             */
         }else if (id == R.id.nav_web) {
             Uri webpage = Uri.parse("rnbcalculator.com");
             Intent intent = new Intent(Intent.ACTION_VIEW, webpage);
