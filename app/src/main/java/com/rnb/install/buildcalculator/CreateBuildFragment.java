@@ -121,7 +121,7 @@ public class CreateBuildFragment extends Fragment {
         weapon.setAdapter(adapter1);
         gear.setAdapter(adapter2);
 
-        Log.d(TAG, "onCreateView: ");
+        //Log.d(TAG, "onCreateView: ");
 
         //Creating button OnClickListener to submit your build
         Button submit = (Button) view.findViewById(R.id.submitButton);

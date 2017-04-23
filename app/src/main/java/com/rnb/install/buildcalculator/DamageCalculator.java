@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,6 +96,7 @@ public class DamageCalculator extends Fragment {
         critDamage = (TextView) view.findViewById(R.id.critDmgGain);
         health = (TextView) view.findViewById(R.id.healthGain);
         armor = (TextView) view.findViewById(R.id.armorGain);
+        magicRes = (TextView) view.findViewById(R.id.magResGain);
         build = (Spinner) view.findViewById(R.id.buildSpinner);
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
@@ -113,20 +115,22 @@ public class DamageCalculator extends Fragment {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 build.getSelectedItem();
+
                 //weapon values
-               /* Item wep = db.getWeapon(build.getSelectedItemPosition());
-                    damage.setText(String.valueOf(wep.getAttackDamage()));
-                    atkSpeed.setText(String.valueOf((int) wep.getAttackSpeed()));
-                    crit.setText(String.valueOf(wep.getCrit()));
-                    critDamage.setText(String.valueOf(wep.getCritDamage()));
+                Item wep = db.getWeapon(build.getSelectedItemPosition());
                 //gear values
                 Item gear = db.getGear(build.getSelectedItemPosition());
-                    health.setText(String.valueOf(gear.getHealth()));
-                    armor.setText(String.valueOf(gear.getArmor()));
-                    magicRes.setText(String.valueOf(gear.getMagicResist()));
-                //db.closeDB();*/
+
+                damage.setText("+ " + wep.getAttackDamage());
+                atkSpeed.setText("+ " +String.valueOf(wep.getAttackSpeed()));
+                crit.setText("+ " +String.valueOf(wep.getCrit()));
+                critDamage.setText("+ " +String.valueOf(wep.getCritDamage()));
+                health.setText("+ " +String.valueOf(gear.getHealth()));
+                armor.setText("+ " +String.valueOf(gear.getArmor()));
+                magicRes.setText("+ " +String.valueOf(gear.getMagicResist()));
             }
         });
 
