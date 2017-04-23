@@ -3,10 +3,10 @@
 
 
     <ListPreference
-        android:defaultValue="1"
-        android:title="My Preferences"
-        android:entries="@array/sample_preference"
-        android:entryValues="@array/sample_preference_value"
-        android:key="myPreference"
-        android:summary="Allows user to select between small, medium and large"/>
+        android:dialogTitle="Theme"
+        android:entries="@array/labels_list_preference"
+        android:entryValues="@array/values_list_preference"
+        android:key="list_preference"
+        android:summary="Set theme preference"
+        android:title="Theme Preference" />
 </PreferenceScreen>
