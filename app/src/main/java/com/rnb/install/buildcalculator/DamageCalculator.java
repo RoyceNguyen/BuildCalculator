@@ -125,7 +125,7 @@ public class DamageCalculator extends Fragment {
                 Item gear = db.getGear(build.getSelectedItemPosition());
 
                 damage.setText("+ " + wep.getAttackDamage());
-                atkSpeed.setText("+ " + wep.getAttackSpeed()));
+                atkSpeed.setText("+ " + wep.getAttackSpeed());
                 crit.setText("+ " +String.valueOf(wep.getCrit()));
                 critDamage.setText("+ " +String.valueOf(wep.getCritDamage()));
                 health.setText("+ " +String.valueOf(gear.getHealth()));
