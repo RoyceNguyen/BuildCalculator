@@ -10,5 +10,8 @@
         <item>2</item>
     </string-array>
 
+    <string-array name="credit">
+        <item>https://pixabay.com/</item>
+    </string-array>
 
 </resources>
