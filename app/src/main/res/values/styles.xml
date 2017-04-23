@@ -8,9 +8,28 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+
+    <style name="HoloLightCustom" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowBackground">@color/mainTextColor</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
+        <item name="android:textColor">@color/buttontextcolor</item>
+    </style>
+
+
+
+    <style name="HoloCustom" parent="@android:style/Theme.Holo">
+        <item name="android:windowBackground">@color/bgcolor</item>
+        <item name="android:colorBackground">@color/bgcolor2</item>
+        <item name="android:textColor">@color/mainTextColor</item>
+    </style>
+
+    <style name="DarkCustom" parent="Theme.AppCompat.DayNight">
+    </style>
+
+    <style name="MyDialogLight" parent="Theme.AppCompat.Light.Dialog.Alert">
+    </style>
+
+    <style name="MyDialogDark" parent="Theme.AppCompat.Dialog.Alert">
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
