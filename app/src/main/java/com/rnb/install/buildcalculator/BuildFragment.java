@@ -50,7 +50,7 @@ public class BuildFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public BuildFragment() {
+    public BuildFragment() { 
         // Required empty public constructor
     }
 
@@ -123,7 +123,6 @@ public class BuildFragment extends Fragment {
                 Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
 
-
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
                     if (wep != null) {
@@ -140,11 +139,8 @@ public class BuildFragment extends Fragment {
 
                 }
                 else{
-
-
                     build.setText(" ");
                     gearChoice.setText(" ");
-
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
