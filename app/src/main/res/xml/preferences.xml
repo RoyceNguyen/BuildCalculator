@@ -15,4 +15,8 @@
         android:entryValues="@array/credit"
         android:summary="Credits attributed to where we get our images"
         android:title="Credits" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> staging
 </PreferenceScreen>

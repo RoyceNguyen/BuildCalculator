@@ -1,5 +1,6 @@
 package com.rnb.install.buildcalculator;
 
+import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -133,10 +135,13 @@ public class CreateBuildFragment extends Fragment {
                 fm = getActivity().getSupportFragmentManager();
                 fm.popBackStack();
             }
+
         });
 
         return view;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

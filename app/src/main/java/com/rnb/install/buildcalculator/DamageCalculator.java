@@ -97,7 +97,9 @@ public class DamageCalculator extends Fragment {
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
         //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
+
         final ArrayList<Build> buildList = db.getAllBuilds();
+        //ArrayList<Build> buildList = db.getAllBuilds();
         ArrayList<String> buildNames = new ArrayList<String>();
         for (int i = 0; i < buildList.size(); i++) {
             buildNames.add(buildList.get(i).getName());
