@@ -50,7 +50,7 @@ public class BuildFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public BuildFragment() {
+    public BuildFragment() { 
         // Required empty public constructor
     }
 
