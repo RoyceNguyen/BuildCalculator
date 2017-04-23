@@ -123,14 +123,18 @@ public class BuildFragment extends Fragment {
                 Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
 
+
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
+                    build.setText(((Build) list.getItemAtPosition(position)).getName());
                     if (wep != null) {
                         build.setText(wep.getName());
+                        build.setVisibility(View.VISIBLE);
                     }
                     gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
                     if (gear != null) {
                        gearChoice.setText(gear.getName());
+                        gearChoice.setVisibility(View.VISIBLE);
                     }
                     //update the text of the show more
                     details.setText("Click to show less");
@@ -139,8 +143,8 @@ public class BuildFragment extends Fragment {
 
                 }
                 else{
-                    build.setText(" ");
-                    gearChoice.setText(" ");
+                    build.setVisibility(View.INVISIBLE);
+                    gearChoice.setVisibility(View.INVISIBLE);
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
