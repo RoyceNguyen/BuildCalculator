@@ -6,8 +6,8 @@
     <color name="colorAccent">#536DFE</color>
 
     <!-- creating a bunch of color ids -->
-    <color name="bgcolor">#ffffff</color>
-    <color name="bgcolor2">#b6b6b6</color>
+    <color name="bgcolor">#696969</color>
+    <color name="bgcolor2">#000000</color>
     <color name="buttontextcolor">#212121</color>
     <color name="titleColor">#b6b6b6</color>
     <color name="dialogTextColor">#b6b6b6</color>

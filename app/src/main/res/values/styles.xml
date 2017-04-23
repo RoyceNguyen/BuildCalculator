@@ -8,25 +8,17 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="BrownActionBar" parent="@android:style/Widget.Holo.Light.ActionBar">
-        <item name="android:background">@color/bar_brown</item>
-    </style>
-<!--
-    <style name="GrayActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:background">@color/bar_gray</item>
-    </style>
--->
+
     <style name="HoloLightCustom" parent="@android:style/Theme.Holo.Light">
-        <item name="android:windowBackground">@color/bgcolor</item>
-        <item name="android:colorBackground">@color/bgcolor</item>
+        <item name="android:windowBackground">@color/mainTextColor</item>
+        <item name="android:colorBackground">@color/colorPrimaryDark</item>
         <item name="android:textColor">@color/buttontextcolor</item>
     </style>
 
-    <style name="LightCustom" parent="Theme.AppCompat.Light.DarkActionBar">
-    </style>
+
 
     <style name="HoloCustom" parent="@android:style/Theme.Holo">
-        <item name="android:windowBackground">@color/bgcolor2</item>
+        <item name="android:windowBackground">@color/bgcolor</item>
         <item name="android:colorBackground">@color/bgcolor2</item>
         <item name="android:textColor">@color/mainTextColor</item>
     </style>
