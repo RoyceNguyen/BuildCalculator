@@ -22,11 +22,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/buildSpinner" />
+    <LinearLayout
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
 
-    =======
->>>>>>> staging
+        <Button
+            android:text="Calculate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/calculateButton"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+
     <!--creating textviews in a gridlayout to output the calculations -->
+
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
