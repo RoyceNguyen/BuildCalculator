@@ -4,6 +4,7 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -95,6 +96,7 @@ public class DamageCalculator extends Fragment {
         critDamage = (TextView) view.findViewById(R.id.critDmgGain);
         health = (TextView) view.findViewById(R.id.healthGain);
         armor = (TextView) view.findViewById(R.id.armorGain);
+        magicRes = (TextView) view.findViewById(R.id.magResGain);
         build = (Spinner) view.findViewById(R.id.buildSpinner);
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
@@ -113,88 +115,25 @@ public class DamageCalculator extends Fragment {
         calculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 build.getSelectedItem();
+
                 //weapon values
-                Item wep = db.getWeapon(build.getSelectedItemPosition());
-                db.closeDB();
-                damage.setText(wep.getAttackDamage());
-                atkSpeed.setText((int) wep.getAttackSpeed());
-                crit.setText(wep.getCrit());
-                critDamage.setText(wep.getCritDamage());
+                Item wep = db.getWeapon(build.getId());
                 //gear values
-                Item gear = db.getGear(build.getSelectedItemPosition());
-                health.setText(gear.getHealth());
-                armor.setText(gear.getArmor());
-                magicRes.setText(gear.getMagicResist());
-            }
-        });
+                Item gear = db.getGear(build.getId());
 
-
-        //get values from selected build
-        //create custom adapter
-        /*calculateButton.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView build = (TextView) view.findViewById(R.id.build);
-                //TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);*/
-                //open a database connection here
-
-        /*build.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                DatabaseHandler db = new DatabaseHandler(getContext());
-                adapterView.getItemAtPosition(i);
-                Item wep = db.getWeapon(build.getSelectedItemPosition());
-                Item gear = db.getGear(build.getSelectedItemPosition());
-                db.closeDB();
-                if (wep != null) {
-                    damage.setText(wep.getAttackDamage());
-                    atkSpeed.setText((int) wep.getAttackSpeed());
-                    crit.setText(wep.getCrit());
-                    critDamage.setText(wep.getCritDamage());
-                }
-                if (gear != null) {
-                    health.setText(gear.getHealth());
-                    armor.setText(gear.getArmor());
-                    magicRes.setText(gear.getMagicResist());
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                damage.setText("+ " + wep.getAttackDamage());
+                atkSpeed.setText("+ " +String.valueOf(wep.getAttackSpeed()));
+                crit.setText("+ " +String.valueOf(wep.getCrit()));
+                critDamage.setText("+ " +String.valueOf(wep.getCritDamage()));
+                health.setText("+ " +String.valueOf(gear.getHealth()));
+                armor.setText("+ " +String.valueOf(gear.getArmor()));
+                magicRes.setText("+ " +String.valueOf(gear.getMagicResist()));
 
             }
         });
-
-
-        /*
-                DatabaseHandler db = new DatabaseHandler(getContext());
-
-                Item wep = db.getWeapon(buildList.get(position).getWeapon());
-                Item gear = db.getGear(buildList.get(position).getGear());
-                db.closeDB();
-
-                if (build.getText() != (buildList.get(position)).getName()) {
-                    //update the text of build
-                    //build.setText(((Build) build.getItemAtPosition(position)).getName());
-                    if (wep != null) {
-                        damage.setText(wep.getAttackDamage());
-                        atkSpeed.setText((int) wep.getAttackSpeed());
-                        crit.setText(wep.getCrit());
-                        critDamage.setText(wep.getCritDamage());
-                    }
-                    //gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
-                    if (gear != null) {
-                        health.setText(gear.getHealth());
-                        armor.setText(gear.getArmor());
-                        magicRes.setText(gear.getMagicResist());
-                    }
-                }
-            }
-        });
-        */
 
 
 
