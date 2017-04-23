@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -117,7 +118,7 @@ public class BuildFragment extends Fragment {
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
                 //open a database connection here
                 DatabaseHandler db = new DatabaseHandler(getContext());
-               // Log.d("WEPCONTENTS", "" + buildslist.size()+"");
+                //Log.d("WEPCONTENTS", "" + buildslist.size()+"");
                 Item wep = db.getWeapon(buildslist.get(position).getWeapon());
                 Item gear = db.getGear(buildslist.get(position).getGear());
                 db.closeDB();
@@ -125,7 +126,6 @@ public class BuildFragment extends Fragment {
 
                 if(build.getText() != (buildslist.get(position)).getName()){
                     //update the text of build
-                    build.setText(((Build) list.getItemAtPosition(position)).getName());
                     if (wep != null) {
                         build.setText(wep.getName());
                     }
@@ -141,6 +141,7 @@ public class BuildFragment extends Fragment {
                 }
                 else{
                     build.setText("");
+                    gearChoice.setText("");
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
@@ -179,23 +180,12 @@ public class BuildFragment extends Fragment {
          */
         public View getView(int position, View convertView, ViewGroup parent){
             final Build item = getItem(position);
-
-           // DatabaseHandler db = new DatabaseHandler(getContext());
-            //ArrayList<Item> weaponList = db.getAllWeapons();
-
-           // ArrayList<String> weaponNames = new ArrayList<String>();
-            //for (int i = 0; i < weaponList.size(); i++) {
-             //   weaponNames.add(weaponList.get(i).getName());
-           // }
-           // ArrayList<Item> weaponList = db.getAllWeapons();
             if(convertView == null){
                 convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_view, parent, false);
             }
 
             TextView name = (TextView) convertView.findViewById(R.id.name);
             name.setText(item.getName());
-            //TextView weaponName = (TextView) convertView.findViewById(R.id.weaponSpinner);
-            //weaponName.setText(weaponName.getText());
 
             return convertView;
         }
@@ -242,4 +232,5 @@ public class BuildFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
 }
