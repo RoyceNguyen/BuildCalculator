@@ -97,14 +97,12 @@ public class DamageCalculator extends Fragment {
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
         //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
-
         final ArrayList<Build> buildList = db.getAllBuilds();
         //ArrayList<Build> buildList = db.getAllBuilds();
         ArrayList<String> buildNames = new ArrayList<String>();
         for (int i = 0; i < buildList.size(); i++) {
             buildNames.add(buildList.get(i).getName());
         }
-
         //Close database
         db.closeDB();
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildList);
@@ -123,6 +121,7 @@ public class DamageCalculator extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 DatabaseHandler db = new DatabaseHandler(getContext());
+                adapterView.getItemAtPosition(i);
                 Item wep = db.getWeapon(build.getSelectedItemPosition());
                 Item gear = db.getGear(build.getSelectedItemPosition());
                 db.closeDB();
