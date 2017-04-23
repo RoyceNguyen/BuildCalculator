@@ -41,7 +41,7 @@ public class BuildFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private String name = " " ;
     /**
      * Fragment created by Blaze
      */
@@ -140,8 +140,11 @@ public class BuildFragment extends Fragment {
 
                 }
                 else{
-                    build.setText("");
-                    gearChoice.setText("");
+
+
+                    build.setText(" ");
+                    gearChoice.setText(" ");
+
                     details.setText("Click to show more");
                     //update the chevron image
                     chevron.setImageResource(R.drawable.ic_expand_more_black_24dp);
