@@ -120,9 +120,9 @@ public class DamageCalculator extends Fragment {
                 build.getSelectedItem();
 
                 //weapon values
-                Item wep = db.getWeapon(build.getId());
+                Item wep = db.getWeapon(build.getSelectedItemPosition());
                 //gear values
-                Item gear = db.getGear(build.getId());
+                Item gear = db.getGear(build.getSelectedItemPosition());
 
                 damage.setText("+ " + wep.getAttackDamage());
                 atkSpeed.setText("+ " +String.valueOf(wep.getAttackSpeed()));
