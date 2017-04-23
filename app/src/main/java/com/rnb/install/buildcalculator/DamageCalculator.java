@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 import static android.R.id.list;
 import static com.rnb.install.buildcalculator.R.id.buildslist;
+import static com.rnb.install.buildcalculator.R.id.calculateButton;
 
 
 /**
@@ -97,82 +99,36 @@ public class DamageCalculator extends Fragment {
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
         //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
-
         final ArrayList<Build> buildList = db.getAllBuilds();
-        //ArrayList<Build> buildList = db.getAllBuilds();
         ArrayList<String> buildNames = new ArrayList<String>();
         for (int i = 0; i < buildList.size(); i++) {
             buildNames.add(buildList.get(i).getName());
         }
-
         //Close database
         db.closeDB();
         ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildList);
         build.setAdapter(adapter);
 
-        //get values from selected build
-        //create custom adapter
-        /*build.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Button calculate = (Button) view.findViewById(R.id.calculateButton);
+        calculate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                TextView build = (TextView) view.findViewById(R.id.build);
-                //TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);*/
-                //open a database connection here
-
-        build.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onClick(View view) {
                 DatabaseHandler db = new DatabaseHandler(getContext());
+                build.getSelectedItem();
+                //weapon values
                 Item wep = db.getWeapon(build.getSelectedItemPosition());
+                db.closeDB();
+                damage.setText(wep.getAttackDamage());
+                atkSpeed.setText((int) wep.getAttackSpeed());
+                crit.setText(wep.getCrit());
+                critDamage.setText(wep.getCritDamage());
+                //gear values
                 Item gear = db.getGear(build.getSelectedItemPosition());
-                db.closeDB();
-                if (wep != null) {
-                    damage.setText(wep.getAttackDamage());
-                    atkSpeed.setText((int) wep.getAttackSpeed());
-                    crit.setText(wep.getCrit());
-                    critDamage.setText(wep.getCritDamage());
-                }
-                if (gear != null) {
-                    health.setText(gear.getHealth());
-                    armor.setText(gear.getArmor());
-                    magicRes.setText(gear.getMagicResist());
-                }
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
+                health.setText(gear.getHealth());
+                armor.setText(gear.getArmor());
+                magicRes.setText(gear.getMagicResist());
             }
         });
-
-
-        /*
-                DatabaseHandler db = new DatabaseHandler(getContext());
-
-                Item wep = db.getWeapon(buildList.get(position).getWeapon());
-                Item gear = db.getGear(buildList.get(position).getGear());
-                db.closeDB();
-
-                if (build.getText() != (buildList.get(position)).getName()) {
-                    //update the text of build
-                    //build.setText(((Build) build.getItemAtPosition(position)).getName());
-                    if (wep != null) {
-                        damage.setText(wep.getAttackDamage());
-                        atkSpeed.setText((int) wep.getAttackSpeed());
-                        crit.setText(wep.getCrit());
-                        critDamage.setText(wep.getCritDamage());
-                    }
-                    //gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
-                    if (gear != null) {
-                        health.setText(gear.getHealth());
-                        armor.setText(gear.getArmor());
-                        magicRes.setText(gear.getMagicResist());
-                    }
-                }
-            }
-        });
-        */
 
 
 
