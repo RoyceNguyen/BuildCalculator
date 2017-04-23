@@ -4,4 +4,15 @@
     <color name="colorPrimary">#03A9F4</color>
     <color name="colorPrimaryDark">#0288D1</color>
     <color name="colorAccent">#536DFE</color>
+
+    <!-- creating a bunch of color ids -->
+    <color name="bgcolor">#696969</color>
+    <color name="bgcolor2">#000000</color>
+    <color name="buttontextcolor">#212121</color>
+    <color name="titleColor">#b6b6b6</color>
+    <color name="dialogTextColor">#b6b6b6</color>
+    <color name="mainTextColor">#ffffff</color>
+    <color name="bar_brown">#ffc107</color>
+    <color name="bar_gray">#727272</color>
+    <color name="dialog_brown">#d7ccc8</color>
 </resources>

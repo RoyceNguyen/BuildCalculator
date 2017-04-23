@@ -7,8 +7,7 @@ import android.preference.PreferenceFragment;
 import java.util.prefs.PreferenceChangeEvent;
 
 /**
- * Created by Blaze on 2017-04-14.
- * Allows user to change font size
+ * Allows user to change app theme
  */
 
 public class SettingsActivity extends PreferenceActivity {

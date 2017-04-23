@@ -7,10 +7,17 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+
+import static android.R.id.list;
+import static com.rnb.install.buildcalculator.R.id.buildslist;
 
 
 /**
@@ -30,6 +37,15 @@ public class DamageCalculator extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    private TextView damage;
+    private TextView atkSpeed;
+    private TextView crit;
+    private TextView critDamage;
+    private TextView health;
+    private TextView armor;
+    private TextView magicRes;
+    Spinner build;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,21 +85,95 @@ public class DamageCalculator extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_damage_calculator, container, false);
-        Spinner build = (Spinner) view.findViewById(R.id.buildSpinner);
+
+        //Creating textviews for all the stats
+        damage = (TextView) view.findViewById(R.id.dmgGain);
+        atkSpeed = (TextView) view.findViewById(R.id.aspeedGain);
+        crit = (TextView) view.findViewById(R.id.critGain);
+        critDamage = (TextView) view.findViewById(R.id.critDmgGain);
+        health = (TextView) view.findViewById(R.id.healthGain);
+        armor = (TextView) view.findViewById(R.id.armorGain);
+        build = (Spinner) view.findViewById(R.id.buildSpinner);
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
         //Use ArrayList on Item to get all the weapons and gears separately to populate Spinners
-        ArrayList<Item> buildList = db.getAllBuilds();
-        ArrayList<String> weaponNames = new ArrayList<String>();
+        final ArrayList<Build> buildList = db.getAllBuilds();
+        ArrayList<String> buildNames = new ArrayList<String>();
         for (int i = 0; i < buildList.size(); i++) {
-            weaponNames.add(buildList.get(i).getName());
+            buildNames.add(buildList.get(i).getName());
         }
-
 
         //Close database
         db.closeDB();
-        ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildList);
-        build.setAdapter(adapter1);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildList);
+        build.setAdapter(adapter);
+
+        //get values from selected build
+        //create custom adapter
+        /*build.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView build = (TextView) view.findViewById(R.id.build);
+                //TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);*/
+                //open a database connection here
+
+        build.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                DatabaseHandler db = new DatabaseHandler(getContext());
+                Item wep = db.getWeapon(build.getSelectedItemPosition());
+                Item gear = db.getGear(build.getSelectedItemPosition());
+                db.closeDB();
+                if (wep != null) {
+                    damage.setText(wep.getAttackDamage());
+                    atkSpeed.setText((int) wep.getAttackSpeed());
+                    crit.setText(wep.getCrit());
+                    critDamage.setText(wep.getCritDamage());
+                }
+                if (gear != null) {
+                    health.setText(gear.getHealth());
+                    armor.setText(gear.getArmor());
+                    magicRes.setText(gear.getMagicResist());
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+        /*
+                DatabaseHandler db = new DatabaseHandler(getContext());
+
+                Item wep = db.getWeapon(buildList.get(position).getWeapon());
+                Item gear = db.getGear(buildList.get(position).getGear());
+                db.closeDB();
+
+                if (build.getText() != (buildList.get(position)).getName()) {
+                    //update the text of build
+                    //build.setText(((Build) build.getItemAtPosition(position)).getName());
+                    if (wep != null) {
+                        damage.setText(wep.getAttackDamage());
+                        atkSpeed.setText((int) wep.getAttackSpeed());
+                        crit.setText(wep.getCrit());
+                        critDamage.setText(wep.getCritDamage());
+                    }
+                    //gearChoice.setText(((Build) list.getItemAtPosition(position)).getName());
+                    if (gear != null) {
+                        health.setText(gear.getHealth());
+                        armor.setText(gear.getArmor());
+                        magicRes.setText(gear.getMagicResist());
+                    }
+                }
+            }
+        });
+        */
+
+
+
         return view;
     }
 
