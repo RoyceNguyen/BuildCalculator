@@ -108,7 +108,7 @@ public class DamageCalculator extends Fragment {
         }
         //Close database
         db.closeDB();
-        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildList);
+        ArrayAdapter adapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, buildNames);
         build.setAdapter(adapter);
 
         Button calculate = (Button) view.findViewById(R.id.calculateButton);
@@ -117,7 +117,7 @@ public class DamageCalculator extends Fragment {
             public void onClick(View view) {
 
                 DatabaseHandler db = new DatabaseHandler(getContext());
-                build.getSelectedItem();
+                build.getSelectedItemId();
 
                 //weapon values
                 Item wep = db.getWeapon(build.getSelectedItemPosition());
@@ -131,11 +131,9 @@ public class DamageCalculator extends Fragment {
                 health.setText("+ " +String.valueOf(gear.getHealth()));
                 armor.setText("+ " +String.valueOf(gear.getArmor()));
                 magicRes.setText("+ " +String.valueOf(gear.getMagicResist()));
+                db.closeDB();
             }
         });
-
-
-
         return view;
     }
 
