@@ -112,18 +112,23 @@ public class CreateBuildFragment extends Fragment {
         for (int j = 0; j < gearList.size(); j++) {
             gearNames.add(gearList.get(j).getName());
         }
-
+        ArrayList<String> classNames = new ArrayList<String>();
+        classNames.add("Warrior");
+        classNames.add("Mage");
+        classNames.add("Assassin");
+        classNames.add("Hunter");
+        classNames.add("Healer");
         //Close database
         db.closeDB();
 
         //Create an ArrayAdapter to grab context and use weaponList and gearList
         ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, weaponNames);
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, gearNames);
-        //ArrayAdapter adapter3 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classChoice);
+        ArrayAdapter adapter3 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classNames);
         //Apply the adapter to the spinner
         weapon.setAdapter(adapter1);
         gear.setAdapter(adapter2);
-
+        classChoice.setAdapter(adapter3);
         //Log.d(TAG, "onCreateView: ");
 
         //Creating button OnClickListener to submit your build
