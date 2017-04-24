@@ -269,7 +269,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Creating getWeapon and getAllWeapons
-    public Item getWeapon(int id) {
+        public Item getWeapon(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Item item = null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_WEAPON + " WHERE " + COLUMN_ID  + "="  + id + "+1 "  , null);
