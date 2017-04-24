@@ -23,7 +23,7 @@ public class Item {
 
     }
 
-    public Item(int id, String name, int attackDamage, int crit, int critDamage, double attackSpeed){
+    public Item(int id, String name, int attackDamage, double attackSpeed, int crit, int critDamage){
         this.id = id;
         this.name = name;
         this.attackDamage = attackDamage;

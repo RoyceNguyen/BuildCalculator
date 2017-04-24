@@ -132,19 +132,19 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL(CREATE_IMAGE_LOCATION_TABLE);
         db.execSQL(CREATE_WEAPON_TABLE);
         db.execSQL(CREATE_GEAR_TABLE);
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('RAGE', 5000, 1.6, 5, 400)");
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('SUNDER', 4785, 1.9, 4, 470)");
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('HYDRAS', 5600, 1.4, 5, 390)");
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('DEATHBRINGER', 6000, 1.1, 4, 400)");
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('WRATH', 6100, 1.3, 4, 500)");
-        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('TITANS', 4000, 2.3, 6, 350)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Rage', 5000, 1.6, 5, 400)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Sunder', 4785, 1.9, 4, 470)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Hydras', 5600, 1.4, 5, 390)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Deathbringer', 6000, 1.1, 4, 400)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Wrath', 6100, 1.3, 4, 500)");
+        db.execSQL("INSERT INTO " + TABLE_WEAPON + "(NAME, ATTACKDAMAGE, ATTACKSPEED, CRIT, CRITDAMAGE ) VALUES ('Titans', 4000, 2.3, 6, 350)");
 
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('MYSTICAL MAIL', 1300, 400, 350)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('OLYMPUS', 1500, 390, 400)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('BULWARK', 1300, 500, 250)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('ARCHON', 1700, 300, 300)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('ROBE', 4000, 100, 150)");
-        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('DRAGONSKIN', 600, 600, 600)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('Mystical Mail', 1300, 400, 350)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('Olympus', 1500, 390, 400)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('BulWark', 1300, 500, 250)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('Archon', 1700, 300, 300)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('Robe', 4000, 100, 150)");
+        db.execSQL("INSERT INTO " + TABLE_GEAR + "(NAME, HEALTH, ARMOR, MAGICRESIST ) VALUES ('Dragonskin', 600, 600, 600)");
     }
 
 
@@ -173,7 +173,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, build.getName());
-        Log.d("addBuildWeapValue", build.getWeapon() + "");
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
         values.put(COLUMN_WEAPON, build.getWeapon());
         values.put(COLUMN_GEAR, build.getGear());
         db.insert(TABLE_BUILDS, null, values);
@@ -259,13 +259,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 Build build = new Build();
                 build.setId(Integer.parseInt(cursor.getString(0)));
-                Log.d("getAllBuildsValue", cursor.getString(0)+ "");
                 build.setName(cursor.getString(1));
-                Log.d("getAllBuildsValue", cursor.getString(1)+ "");
                 build.setWeapon(cursor.getInt(2));
-                Log.d("getAllBuildsValue", cursor.getInt(2)+ "");
                 build.setGear(cursor.getInt(3));
-                Log.d("getAllBuildsValue", cursor.getInt(3)+ "");
                 buildsList.add(build);
             } while (cursor.moveToNext());
         }
@@ -273,18 +269,13 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
     //Creating getWeapon and getAllWeapons
-    public Item getWeapon(int id) {
+        public Item getWeapon(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Item item = null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_WEAPON + " WHERE " + COLUMN_ID  + "="  + id + "+1 "  , null);
-                //TABLE_WEAPON,
-                //new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_ATTACKDAMAGE, COLUMN_ATTACKSPEED, COLUMN_CRIT, COLUMN_CRITDAMAGE}, COLUMN_ID + "=?",
-                //new String[] { String.valueOf(id) }, null, null, null, null);
-        //Log.d("GETWEAP", cursor.toString());
         if (cursor != null && cursor.moveToFirst()) {
-            //Log.d("GETWEAP", "GOT HERE 2");
             item = new Item(Integer.parseInt(cursor.getString(0)),
-                    cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
+                    cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getInt(4), cursor.getInt(5));
         }
         return item;
     }
@@ -315,16 +306,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Item item = null;
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_GEAR + " WHERE " + COLUMN_ID + "=" + id + "+1 ", null);
-        /*
-        Cursor cursor = db.query(TABLE_GEAR,
-                new String[] { COLUMN_ID, COLUMN_NAME, COLUMN_HEALTH, COLUMN_ARMOR, COLUMN_MAGICRESIST}, COLUMN_ID + "=?",
-                new String[] { String.valueOf(id) }, null, null, null, null);
-*/
         if (cursor != null && cursor.moveToFirst()) {
-
             item = new Item(Integer.parseInt(cursor.getString(0)),
                     cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4));
-
         }
         return item;
     }
