@@ -114,6 +114,7 @@ public class BuildFragment extends Fragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 TextView build = (TextView) view.findViewById(R.id.build);
                 TextView gearChoice = (TextView) view.findViewById(R.id.gearChoice);
+               
                 TextView details = (TextView) view.findViewById(R.id.details);
                 ImageView chevron = (ImageView) view.findViewById(R.id.chevron);
                 //open a database connection here
