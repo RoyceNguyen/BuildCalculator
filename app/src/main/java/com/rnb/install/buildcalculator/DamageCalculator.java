@@ -118,9 +118,6 @@ public class DamageCalculator extends Fragment {
 
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 Build newBuild = (Build) build.getSelectedItem();
-
-
-
                 //weapon values
                 Item wep = db.getWeapon(newBuild.getWeapon());
                 //gear values
