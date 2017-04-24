@@ -173,7 +173,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, build.getName());
-        Log.d("addBuildWeapValue", build.getWeapon() + "");
+        //Log.d("addBuildWeapValue", build.getWeapon() + "");
         values.put(COLUMN_WEAPON, build.getWeapon());
         values.put(COLUMN_GEAR, build.getGear());
         db.insert(TABLE_BUILDS, null, values);
