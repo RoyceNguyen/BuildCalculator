@@ -97,6 +97,8 @@ public class CreateBuildFragment extends Fragment {
         weapon = (Spinner) view.findViewById(R.id.weaponSpinner);
         gear = (Spinner) view.findViewById(R.id.gearSpinner);
         classChoice = (Spinner) view.findViewById(R.id.classSpinner);
+        String[] classes = {"Warrior", "Mage", "Assassin", "Hunter", "Healer"};
+
 
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
@@ -123,8 +125,6 @@ public class CreateBuildFragment extends Fragment {
         //Apply the adapter to the spinner
         weapon.setAdapter(adapter1);
         gear.setAdapter(adapter2);
-
-        //Log.d(TAG, "onCreateView: ");
 
         //Creating button OnClickListener to submit your build
         Button submit = (Button) view.findViewById(R.id.submitButton);
