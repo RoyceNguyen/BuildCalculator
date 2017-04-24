@@ -131,7 +131,7 @@ public class DamageCalculator extends Fragment {
                 health.setText("+ " + gear.getHealth());
                 armor.setText("+ " + gear.getArmor());
                 magicRes.setText("+ " + gear.getMagicResist());
-
+                db.closeDB();
             }
         });
         return view;
