@@ -275,7 +275,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_WEAPON + " WHERE " + COLUMN_ID  + "="  + id + "+1 "  , null);
         if (cursor != null && cursor.moveToFirst()) {
             item = new Item(Integer.parseInt(cursor.getString(0)),
-                    cursor.getString(1), cursor.getInt(2), cursor.getInt(3), cursor.getInt(4), cursor.getDouble(5));
+                    cursor.getString(1), cursor.getInt(2), cursor.getDouble(3), cursor.getInt(4), cursor.getInt(5));
         }
         return item;
     }
