@@ -118,22 +118,21 @@ public class DamageCalculator extends Fragment {
 
                 DatabaseHandler db = new DatabaseHandler(getContext());
                 Build newBuild = (Build) build.getSelectedItem();
-                Item wep = db.getWeapon(newBuild.getWeapon());
-                Item gear = db.getGear(newBuild.getGear());
+
+
 
                 //weapon values
-                //Item wep = db.getWeapon(build.getSelectedItemPosition());
+                Item wep = db.getWeapon(newBuild.getWeapon());
                 //gear values
-                //Item gear = db.getGear(build.getSelectedItemPosition());
+                Item gear = db.getGear(newBuild.getGear());
 
                 damage.setText("+ " + wep.getAttackDamage());
                 atkSpeed.setText("+ "  + wep.getAttackSpeed());
                 crit.setText("+ " + wep.getCrit());
                 critDamage.setText("+ " + wep.getCritDamage());
-                health.setText("+ " + gear.getHealth());
+                health.setText("+ " +gear.getHealth());
                 armor.setText("+ " + gear.getArmor());
                 magicRes.setText("+ " + gear.getMagicResist());
-                db.closeDB();
             }
         });
         return view;
