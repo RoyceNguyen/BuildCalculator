@@ -51,6 +51,7 @@ public class CreateBuildFragment extends Fragment {
     //Add EditText name, for user to enter in their own build name
     EditText name;
     //Add Spinner for both weapon and gear for user to choose from list
+    Spinner classChoice;
     Spinner weapon;
     Spinner gear;
 
@@ -95,6 +96,7 @@ public class CreateBuildFragment extends Fragment {
         name = (EditText) view.findViewById(R.id.buildName);
         weapon = (Spinner) view.findViewById(R.id.weaponSpinner);
         gear = (Spinner) view.findViewById(R.id.gearSpinner);
+        classChoice = (Spinner) view.findViewById(R.id.classSpinner);
 
         //initializing Database
         DatabaseHandler db = new DatabaseHandler(getContext());
@@ -117,6 +119,7 @@ public class CreateBuildFragment extends Fragment {
         //Create an ArrayAdapter to grab context and use weaponList and gearList
         ArrayAdapter adapter1 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, weaponNames);
         ArrayAdapter adapter2 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, gearNames);
+        //ArrayAdapter adapter3 = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_dropdown_item, classChoice);
         //Apply the adapter to the spinner
         weapon.setAdapter(adapter1);
         gear.setAdapter(adapter2);
